@@ -1,0 +1,11 @@
+# =========================
+# Gitignore fuer Kinetis
+# =========================
+/Debug/
+/Generated_Code/
+/.settings/
+/Documentation/
+*.g_c
+*.g_x
+ProjectInfo.xml
+.cwGeneratedFileSetLog
