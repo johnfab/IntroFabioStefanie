@@ -5,8 +5,8 @@
  *      Author: fabio
  */
 
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef __PLATFORM_H_
+#define __PLATFORM_H_
 
 // include the local platform to find out what platform we have (LOCAL_PLATFOR_IS_...)
 #include "Local_Platform.h"
@@ -33,4 +33,4 @@
 
 
 
-#endif /* PLATFORM_H_ */
+#endif /* __PLATFORM_H_ */
