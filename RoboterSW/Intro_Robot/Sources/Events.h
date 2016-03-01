@@ -39,6 +39,7 @@
 #include "LED2.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
+#include "WAIT1.h"
 
 #ifdef __cplusplus
 extern "C" {
