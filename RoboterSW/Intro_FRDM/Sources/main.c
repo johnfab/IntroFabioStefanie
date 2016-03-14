@@ -42,12 +42,17 @@
 #include "BitIoLdd3.h"
 #include "HF1.h"
 #include "CS1.h"
+#include "TI1.h"
+#include "TimerIntLdd1.h"
+#include "TU1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
+
+static void (*fp)(void) = 0; // Generate a HardFault
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -61,12 +66,7 @@ int main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
-  for(;;) {
-	  LED1_On();
-	  WAIT1_Waitms(500);
-	  LED1_Off();
-	  WAIT1_Waitms(500);
-  }
+  fp(); // Call Function which will lead to a HardFault
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
