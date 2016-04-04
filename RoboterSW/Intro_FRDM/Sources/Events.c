@@ -1,11 +1,11 @@
 /* ###################################################################
 **     Filename    : Events.c
-**     Project     : Intro_FRDM
+**     Project     : FS2016_FRDM
 **     Processor   : MKL25Z128VLK4
 **     Component   : Events
 **     Version     : Driver 01.00
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-02-29, 09:56, # CodeGen: 0
+**     Date/Time   : 2016-02-23, 11:20, # CodeGen: 0
 **     Abstract    :
 **         This is user's event module.
 **         Put your event handler code here.
@@ -35,6 +35,10 @@ extern "C" {
 
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+#include "Platform.h"
+#include "Event.h"
+#include "Timer.h"
+#include "Keys.h"
 
 /*
 ** ===================================================================
@@ -56,6 +60,101 @@ void Cpu_OnNMIINT(void)
 
 /*
 ** ===================================================================
+**     Event       :  SW7_OnInterrupt (module Events)
+**
+**     Component   :  SW7 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW7_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+  KEY_OnInterrupt(KEY_BTN7);
+#endif
+}
+
+/*
+** ===================================================================
+**     Event       :  SW4_OnInterrupt (module Events)
+**
+**     Component   :  SW4 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW4_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+  KEY_OnInterrupt(KEY_BTN4);
+#endif
+}
+
+/*
+** ===================================================================
+**     Event       :  SW3_OnInterrupt (module Events)
+**
+**     Component   :  SW3 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW3_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+  KEY_OnInterrupt(KEY_BTN3);
+#endif
+}
+
+/*
+** ===================================================================
+**     Event       :  SW2_OnInterrupt (module Events)
+**
+**     Component   :  SW2 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW2_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+  KEY_OnInterrupt(KEY_BTN2);
+#endif
+}
+
+/*
+** ===================================================================
+**     Event       :  SW1_OnInterrupt (module Events)
+**
+**     Component   :  SW1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW1_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+  KEY_OnInterrupt(KEY_BTN1);
+#endif
+}
+
+/*
+** ===================================================================
 **     Event       :  TI1_OnInterrupt (module Events)
 **
 **     Component   :  TI1 [TimerInt]
@@ -70,8 +169,13 @@ void Cpu_OnNMIINT(void)
 */
 void TI1_OnInterrupt(void)
 {
-  /* Write your code here ... */
+#if PL_CONFIG_HAS_TIMER
+  TMR_OnInterrupt();
+#endif
 }
+
+
+
 
 /* END Events */
 

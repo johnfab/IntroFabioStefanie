@@ -17,8 +17,44 @@
 
 typedef enum EVNT_Handle {
   EVNT_STARTUP,            /*!< System startup Event */
-  EVENT_LED_HEARTBEAT,     /*!< LED heartbeat */
-  EVENT_SW1_PRESSED,
+  EVNT_LED_HEARTBEAT,     /*!< LED heartbeat */
+#if PL_CONFIG_HAS_KEYS
+  #if PL_CONFIG_NOF_KEYS>=1
+  EVNT_SW1_PRESSED,			// short press
+  EVNT_SW1_RELEASED,
+  EVNT_SW1_LPRESSED,		// long press
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=2
+  EVNT_SW2_PRESSED,
+  EVNT_SW2_RELEASED,
+  EVNT_SW2_LPRESSED,
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=3
+  EVNT_SW3_PRESSED,
+  EVNT_SW3_RELEASED,
+  EVNT_SW3_LPRESSED,
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=4
+  EVNT_SW4_PRESSED,
+  EVNT_SW4_RELEASED,
+  EVNT_SW4_LPRESSED,
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=5
+  EVNT_SW5_PRESSED,
+  EVNT_SW5_RELEASED,
+  EVNT_SW5_LPRESSED,
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=6
+  EVNT_SW6_PRESSED,
+  EVNT_SW6_RELEASED,
+  EVNT_SW6_LPRESSED,
+  #endif
+  #if PL_CONFIG_NOF_KEYS>=7
+  EVNT_SW7_PRESSED,
+  EVNT_SW7_RELEASED,
+  EVNT_SW7_LPRESSED,
+  #endif
+#endif
   /*!< \todo Your events here */
   EVNT_NOF_EVENTS       /*!< Must be last one! */
 } EVNT_Handle;

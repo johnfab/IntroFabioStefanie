@@ -1,6 +1,3 @@
-# =========================
-# Gitignore fuer Kinetis
-# =========================
 /Debug/
 /Generated_Code/
 /.settings/

@@ -1,10 +1,10 @@
 /* ###################################################################
-*     Filename    : main.c
-**     Project     : Intro_FRDM
+**     Filename    : main.c
+**     Project     : FS2016_FRDM
 **     Processor   : MKL25Z128VLK4
 **     Version     : Driver 01.01
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-02-29, 09:56, # CodeGen: 0
+**     Date/Time   : 2016-02-23, 11:20, # CodeGen: 0
 **     Abstract    :
 **         Main module.
 **         This module contains user's application code.
@@ -30,29 +30,46 @@
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
-#include "LED1.h"
-#include "LEDpin1.h"
+#include "LEDPin1.h"
 #include "BitIoLdd1.h"
-#include "WAIT1.h"
-#include "LED2.h"
-#include "LEDpin2.h"
+#include "LEDPin2.h"
 #include "BitIoLdd2.h"
-#include "LED3.h"
-#include "LEDpin3.h"
+#include "LEDPin3.h"
 #include "BitIoLdd3.h"
-#include "HF1.h"
+#include "WAIT1.h"
 #include "CS1.h"
+#include "HF1.h"
+#include "SW1.h"
+#include "ExtIntLdd1.h"
+#include "SW2.h"
+#include "ExtIntLdd2.h"
+#include "SW3.h"
+#include "ExtIntLdd3.h"
+#include "SW4.h"
+#include "ExtIntLdd4.h"
+#include "SW5.h"
+#include "BitIoLdd8.h"
+#include "SW6.h"
+#include "BitIoLdd9.h"
+#include "SW7.h"
+#include "ExtIntLdd5.h"
+#include "AD1.h"
+#include "AdcLdd1.h"
+#include "KSDK1.h"
 #include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "TU1.h"
+#include "AS1.h"
+#include "ASerialLdd2.h"
+#include "CLS1.h"
+#include "UTIL1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
-
-static void (*fp)(void) = 0; // Generate a HardFault
+#include "Application.h"
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -63,10 +80,7 @@ int main(void)
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
-
-  /* Write your code here */
-  /* For example: for(;;) { } */
-  fp(); // Call Function which will lead to a HardFault
+  APP_Start();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/

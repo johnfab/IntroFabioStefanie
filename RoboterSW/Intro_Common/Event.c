@@ -21,11 +21,11 @@ typedef uint16_t EVNT_MemUnit; /*!< memory unit used to store events flags */
 static EVNT_MemUnit EVNT_Events[((EVNT_NOF_EVENTS-1)/EVNT_MEM_UNIT_NOF_BITS)+1]; /*!< Bit set of events */
 
 #define SET_EVENT(event) \
-  EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS] |= (1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>((uint8_t)((event)%EVNT_MEM_UNIT_NOF_BITS)) /*!< Set the event */
+  EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS] |= (1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>(((event)%EVNT_MEM_UNIT_NOF_BITS)) /*!< Set the event */
 #define CLR_EVENT(event) \
-  EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS] &= ~((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>((uint8_t)((event)%EVNT_MEM_UNIT_NOF_BITS))) /*!< Clear the event */
+  EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS] &= ~((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>(((event)%EVNT_MEM_UNIT_NOF_BITS))) /*!< Clear the event */
 #define GET_EVENT(event) \
-  (bool)(EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS]&((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>((uint8_t)((event)%EVNT_MEM_UNIT_NOF_BITS)))) /*!< Return TRUE if event is set */
+  (bool)(EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS]&((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>(((event)%EVNT_MEM_UNIT_NOF_BITS)))) /*!< Return TRUE if event is set */
 
 void EVNT_SetEvent(EVNT_Handle event) {
   CS1_CriticalVariable();
@@ -34,6 +34,22 @@ void EVNT_SetEvent(EVNT_Handle event) {
   SET_EVENT(event);
   CS1_ExitCritical();
 }
+
+#if 0
+bool test(EVNT_Handle event) {
+//  (bool)(EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS]&((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>(((event)%EVNT_MEM_UNIT_NOF_BITS)))) /*!< Return TRUE if event is set */
+  bool res;
+  EVNT_MemUnit val;
+  int shift1, shift2;
+
+  val = EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS];
+  shift1 = (1<<(EVNT_MEM_UNIT_NOF_BITS-1));
+  shift2 = (event)%EVNT_MEM_UNIT_NOF_BITS;
+  shift1 = shift1>>shift2;
+  res = val&shift1;
+  return res;
+}
+#endif
 
 void EVNT_ClearEvent(EVNT_Handle event) {
   CS1_CriticalVariable();

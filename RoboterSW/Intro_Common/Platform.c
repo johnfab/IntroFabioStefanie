@@ -17,6 +17,16 @@
 #if PL_CONFIG_HAS_KEYS
   #include "Keys.h"
 #endif
+#if PL_CONFIG_HAS_TRIGGER
+  #include "Trigger.h"
+#endif
+#if PL_CONFIG_HAS_BUZZER
+  #include "Buzzer.h"
+#endif
+#if PL_CONFIG_HAS_DEBOUNCE
+  #include "Debounce.h"
+  #include "KeyDebounce.h"
+#endif
 
 void PL_Init(void) {
 #if PL_CONFIG_HAS_LEDS
@@ -31,9 +41,27 @@ void PL_Init(void) {
 #if PL_CONFIG_HAS_KEYS
   KEY_Init();
 #endif
+#if PL_CONFIG_HAS_TRIGGER
+  TRG_Init();
+#endif
+#if PL_CONFIG_HAS_BUZZER
+  BUZ_Init();
+#endif
+#if PL_CONFIG_HAS_DEBOUNCE
+  KEYDBNC_Init();
+#endif
 }
 
 void PL_Deinit(void) {
+#if PL_CONFIG_HAS_DEBOUNCE
+  KEYDBNC_Deinit();
+#endif
+#if PL_CONFIG_HAS_BUZZER
+  BUZ_Deinit();
+#endif
+#if PL_CONFIG_HAS_TRIGGER
+  TRG_Deinit();
+#endif
 #if PL_CONFIG_HAS_KEYS
   KEY_Deinit();
 #endif
