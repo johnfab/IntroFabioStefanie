@@ -10,6 +10,7 @@
 #if PL_CONFIG_HAS_TIMER
 #include "Timer.h"
 #include "Event.h"
+#include "Trigger.h"
 
 void TMR_OnInterrupt(void) {
   /* this one gets called from an interrupt!!!! */
