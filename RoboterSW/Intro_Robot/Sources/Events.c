@@ -1,11 +1,11 @@
 /* ###################################################################
 **     Filename    : Events.c
-**     Project     : Intro_Robot
+**     Project     : FS2016_Robo
 **     Processor   : MK22FX512VLQ12
 **     Component   : Events
 **     Version     : Driver 01.00
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-02-29, 10:02, # CodeGen: 0
+**     Date/Time   : 2016-02-28, 20:48, # CodeGen: 0
 **     Abstract    :
 **         This is user's event module.
 **         Put your event handler code here.
@@ -35,6 +35,11 @@ extern "C" {
 
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+#include "Platform.h"
+#include "Event.h"
+#include "Timer.h"
+#include "Debounce.h"
+#include "KeyDebounce.h"
 
 /*
 ** ===================================================================
@@ -56,6 +61,27 @@ void Cpu_OnNMIINT(void)
 
 /*
 ** ===================================================================
+**     Event       :  SW1_OnInterrupt (module Events)
+**
+**     Component   :  SW1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW1_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_KEYS
+	//Deactivated in favor of Key Debouncing
+	//EVNT_SetEvent(EVNT_SW1_PRESSED);
+	KEYDBNC_Process();
+#endif
+}
+
+/*
+** ===================================================================
 **     Event       :  TI1_OnInterrupt (module Events)
 **
 **     Component   :  TI1 [TimerInt]
@@ -70,8 +96,9 @@ void Cpu_OnNMIINT(void)
 */
 void TI1_OnInterrupt(void)
 {
-  /* Write your code here ... */
+  TMR_OnInterrupt();
 }
+
 
 /* END Events */
 
