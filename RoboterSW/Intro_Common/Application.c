@@ -13,7 +13,10 @@
 #include "CS1.h"
 #include "Keys.h"
 #include "CLS1.h"
-//#include "FRTOS1.h"
+#include "FRTOS1.h"
+#if PL_CONFIG_HAS_RTOS
+  #include "RTOS.h"
+#endif
 
 #if PL_CONFIG_HAS_EVENTS
 static void APP_EventHandler(EVNT_Handle event) {
