@@ -9,6 +9,9 @@
 #define SOURCES_PLATFORM_LOCAL_H_
 
 /* board identification: */
+#define LOCAL_PLATFORM_IS_FRDM (1)
+#define LOCAL_PLATFORM_IS_ROBO (0)
+
 #define PL_LOCAL_CONFIG_BOARD_IS_FRDM     (1) /* I'm the FRDM board */
 #define PL_LOCAL_CONFIG_NOF_LEDS          (3) /* number of LEDs */
 #define PL_LOCAL_CONFIG_NOF_KEYS          (7) /* number of keys */
