@@ -51,6 +51,7 @@
 #include "UTIL1.h"
 #include "BUZ1.h"
 #include "BitIoLdd4.h"
+#include "FRTOS1.h"
 #include "PTA.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
@@ -71,8 +72,11 @@ int main(void)
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */
-  APP_Start();
   /* For example: for(;;) { } */
+#if PL_CONFIG_HAS_RTOS
+  RTOS_Run(); /* Start the RTOS - normally does not exit */
+#endif
+  APP_Start(); /* Fallback Code */
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
