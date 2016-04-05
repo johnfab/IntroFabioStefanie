@@ -32,6 +32,7 @@
   #error "One board type has to be defined in Platform_Local.h!"
 #endif
 
+
 #define PL_CONFIG_TEST_DRIVERS  (1) /* if enabled, will perform driver tests */
 
 /* configuration from local config */
@@ -55,6 +56,7 @@
 #define PL_CONFIG_HAS_BUZZER    (1 && PL_CONFIG_BOARD_IS_ROBO) /* support for buzzer */
 #define PL_CONFIG_HAS_DEBOUNCE  (1) /* support for debouncing */
 
+#define PL_CONFIG_HAS_RTOS      (1) /* RTOS support */
 #define PL_CONFIG_HAS_SHELL     (0) /* shell support disabled for now */
 
 
