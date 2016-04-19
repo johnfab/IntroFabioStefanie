@@ -60,6 +60,17 @@
 #include "MOTTU.h"
 #include "PWMR.h"
 #include "PwmLdd2.h"
+#include "Q4C1.h"
+#include "C11.h"
+#include "BitIoLdd7.h"
+#include "C21.h"
+#include "BitIoLdd8.h"
+#include "Q4C2.h"
+#include "C12.h"
+#include "BitIoLdd9.h"
+#include "C22.h"
+#include "BitIoLdd10.h"
+#include "QUADTU.h"
 #include "PTA.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
@@ -84,6 +95,7 @@ int main(void)
   /* For example: for(;;) { } */
 #if PL_CONFIG_HAS_RTOS
   RTOS_Init(); /* Init the RTOS */
+  PL_Init();
   RTOS_Run(); /* Start the RTOS - normally does not exit */
 #endif
   APP_Start(); /* Fallback Code */

@@ -6,22 +6,28 @@
 
 #include "Platform.h"
 #if PL_CONFIG_HAS_RTOS
+
 #include "RTOS.h"
 #include "FRTOS1.h"
 #include "LED.h"
 #include "Event.h"
 #include "Keys.h"
 #include "Application.h"
-#include "Tasks.h"
 
-static void AppTask(void* param) {
-  (void)param; /* avoid compiler warning */
-  EVNT_SetEvent(EVNT_STARTUP); /* set startup event */
-  for(;;) {
-    LED1_Neg();
-    FRTOS1_vTaskDelay(500/portTICK_PERIOD_MS);
-  }
+
+
+/* Main Task */
+static void Task_MainTask (void *pvParameters) {
+	(void)pvParameters; /* avoid compiler warning */
+	for (;;) {
+		LED1_Neg();
+		FRTOS1_vTaskDelay(500/portTICK_PERIOD_MS);
+	}
 }
+
+/* ---------------------------------------------------------------------------------------------- */
+/* ----- RTOS from here ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
 
 void RTOS_Run(void) {
   FRTOS1_vTaskStartScheduler();  /* does usually not return! */

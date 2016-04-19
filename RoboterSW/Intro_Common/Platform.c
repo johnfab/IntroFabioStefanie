@@ -50,9 +50,22 @@ void PL_Init(void) {
 #if PL_CONFIG_HAS_DEBOUNCE
   KEYDBNC_Init();
 #endif
+#if PL_CONFIG_HAS_SHELL
+  CLS1_Init();
+#endif
+#if PL_CONFIG_HAS_BLUETOOTH
+  BT1_Init();
+#endif
 }
 
+
 void PL_Deinit(void) {
+#if PL_CONFIG_HAS_BLUETOOTH
+  BT1_Deinit();
+#endif
+#if PL_CONFIG_HAS_SHELL
+  CLS1_Deinit();
+#endif
 #if PL_CONFIG_HAS_DEBOUNCE
   KEYDBNC_Deinit();
 #endif
