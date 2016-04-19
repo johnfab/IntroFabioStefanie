@@ -41,9 +41,6 @@
 #include "SW1.h"
 #include "ExtIntLdd1.h"
 #include "KSDK1.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
-#include "TU1.h"
 #include "BT1.h"
 #include "Serial1.h"
 #include "ASerialLdd1.h"
@@ -52,6 +49,17 @@
 #include "BUZ1.h"
 #include "BitIoLdd4.h"
 #include "FRTOS1.h"
+#include "RTT1.h"
+#include "SYS1.h"
+#include "DIRL.h"
+#include "BitIoLdd5.h"
+#include "DIRR.h"
+#include "BitIoLdd6.h"
+#include "PWML.h"
+#include "PwmLdd1.h"
+#include "MOTTU.h"
+#include "PWMR.h"
+#include "PwmLdd2.h"
 #include "PTA.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
@@ -60,6 +68,7 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "Application.h"
+#include "RTOS.h"
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -74,6 +83,7 @@ int main(void)
   /* Write your code here */
   /* For example: for(;;) { } */
 #if PL_CONFIG_HAS_RTOS
+  RTOS_Init(); /* Init the RTOS */
   RTOS_Run(); /* Start the RTOS - normally does not exit */
 #endif
   APP_Start(); /* Fallback Code */

@@ -12,6 +12,7 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Application.h"
+#include "Tasks.h"
 
 static void AppTask(void* param) {
   (void)param; /* avoid compiler warning */
@@ -27,7 +28,12 @@ void RTOS_Run(void) {
 }
 
 void RTOS_Init(void) {
-  /*! \todo Create tasks here */
+  /* Create Main Task */
+	if(xTaskCreate(Task_MainTask, "MainTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
+		for(;;){
+			/* Only in the case of an error */
+		}
+	}
 }
 
 void RTOS_Deinit(void) {

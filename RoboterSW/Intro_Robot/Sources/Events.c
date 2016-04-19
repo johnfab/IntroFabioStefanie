@@ -143,7 +143,7 @@ void FRTOS1_vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName)
 void FRTOS1_vApplicationTickHook(void)
 {
   /* Called for every RTOS tick. */
-  /* Write your code here ... */
+	TMR_OnInterrupt(); // With this a Timer module can be saved
 }
 
 /*
