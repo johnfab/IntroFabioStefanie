@@ -151,6 +151,10 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
+
+  /* Enter Critical Section - TIME SENSITIV TASK */
+  CS1_CriticalVariable();
+  CS1_EnterCritical();
   (void)RefCnt_ResetCounter(timerHandle); /* reset timer counter */
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
@@ -168,6 +172,8 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
       }
     }
   } while(cnt!=REF_NOF_SENSORS);
+  /* Exit Critical Section*/
+  CS1_ExitCritical();
   LED_IR_Off(); /* IR LED's off */
 }
 

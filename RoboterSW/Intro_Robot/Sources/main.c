@@ -60,17 +60,23 @@
 #include "MOTTU.h"
 #include "PWMR.h"
 #include "PwmLdd2.h"
-#include "Q4C1.h"
+#include "Q4CLeft.h"
 #include "C11.h"
 #include "BitIoLdd7.h"
 #include "C21.h"
 #include "BitIoLdd8.h"
-#include "Q4C2.h"
+#include "Q4CRight.h"
 #include "C12.h"
 #include "BitIoLdd9.h"
 #include "C22.h"
 #include "BitIoLdd10.h"
 #include "QUADTU.h"
+#include "USB1.h"
+#include "USB0.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
+#include "TMOUT1.h"
 #include "PTA.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
@@ -89,7 +95,7 @@ int main(void)
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
-  /*** End of Processor Expert internal initialization.                    ***/
+  /*** End of Processor Expert internal initialization. ***/
 
   /* Write your code here */
   /* For example: for(;;) { } */

@@ -61,15 +61,17 @@
 #define PL_CONFIG_HAS_SHELL       (1) /* shell support */
 #define PL_CONFIG_HAS_SHELL_QUEUE (1 && PL_CONFIG_HAS_SHELL) /* shell queue support */
 #define PL_CONFIG_HAS_BLUETOOTH   (1) /* bluetooth support */
+#define PL_CONFIG_HAS_USB_CDC     (1) /* USB CDC support */
+#define PL_CONFIG_HAS_SEGGER_RTT  (1) /* Segger RTT support */
 
 /* Platform spezifisch*/
 #if PL_CONFIG_BOARD_IS_ROBO
 	#define PL_CONFIG_HAS_REFLECTANCE (0) /* relflectance sensor support */
-	#define PL_CONFIG_HAS_MOTOR       (1) /* motor support */
+	#define PL_CONFIG_HAS_MOTOR       (0) /* motor support */
 	#define PL_CONFIG_HAS_QUADRATURE  (0) /* quadratur encoder support */
 	#define PL_CONFIG_HAS_MOTOR_TACHO (0) /* motor tacho support */
 	#define PL_CONFIG_HAS_PID         (0) /* PID support */
-	#define PL_CONFIG_HAS_DRIVE       (1) /* drive support */
+	#define PL_CONFIG_HAS_DRIVE       (0) /* drive support */
 	#define PL_CONFIG_HAS_TURN        (0) /* turn support */
 	#define PL_CONFIG_HAS_LINE_FOLLOW (0) /* line follower support */
 	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */

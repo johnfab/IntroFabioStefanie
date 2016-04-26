@@ -81,7 +81,7 @@ void PL_Init(void) {
   KEYDBNC_Init();
 #endif
 #if PL_CONFIG_HAS_SHELL
-  CLS1_Init();
+  SHELL_Init();
 #endif
 #if PL_CONFIG_HAS_SHELL_QUEUE
   SQUEUE_Init();
