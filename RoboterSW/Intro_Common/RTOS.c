@@ -14,8 +14,6 @@
 #include "Keys.h"
 #include "Application.h"
 
-
-
 /* Main Task */
 static void Task_MainTask (void *pvParameters) {
 	(void)pvParameters; /* avoid compiler warning */
@@ -25,10 +23,7 @@ static void Task_MainTask (void *pvParameters) {
 	}
 }
 
-/* ---------------------------------------------------------------------------------------------- */
-/* ----- RTOS from here ------------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------------------------------- */
-
+/* Startet RTOS */
 void RTOS_Run(void) {
   FRTOS1_vTaskStartScheduler();  /* does usually not return! */
 }
