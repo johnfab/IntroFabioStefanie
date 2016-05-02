@@ -19,6 +19,7 @@
 #include "Q4CLeft.h"
 #include "Q4CRight.h"
 #include "Shell.h"
+#include "ShellQueue.h"
 #include "WAIT1.h"
 
 struct {
@@ -351,6 +352,7 @@ static void DriveTask(void *pvParameters) {
     } else if (DRV_Status.mode==DRV_MODE_NONE) {
       /* do nothing */
     }
+
     FRTOS1_vTaskDelayUntil(&xLastWakeTime, 5/portTICK_PERIOD_MS);
   } /* for */
 }

@@ -72,7 +72,7 @@
 	#define PL_CONFIG_HAS_QUADRATURE  (1) /* quadratur encoder support */
 	#define PL_CONFIG_HAS_MOTOR_TACHO (1) /* motor tacho support */
 	#define PL_CONFIG_HAS_PID         (1) /* PID support */
-	#define PL_CONFIG_HAS_DRIVE       (0) /* drive support */
+	#define PL_CONFIG_HAS_DRIVE       (1) /* drive support */
 	#define PL_CONFIG_HAS_TURN        (0) /* turn support */
 	#define PL_CONFIG_HAS_LINE_FOLLOW (0) /* line follower support */
 	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */

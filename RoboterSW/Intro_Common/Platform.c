@@ -102,7 +102,7 @@ void PL_Init(void) {
   PID_Init();
 #endif
 #if PL_CONFIG_HAS_DRIVE
-DRV_Init();
+  DRV_Init();
 #endif
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Init();

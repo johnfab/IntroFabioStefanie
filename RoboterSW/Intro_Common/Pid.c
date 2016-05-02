@@ -248,7 +248,7 @@ void PID_PosCfg(int32_t currPos, int32_t setPos, bool isLeft, PID_Config *config
   if (speed>0xFFFF) {
     speed = 0xFFFF;
   }
-#if 1
+#if 0
   /* limit speed to maximum value */
   val = ((int32_t)config->maxSpeedPercent)*(0xffff/100); /* 100% */
   speed = Limit(speed, -val, val);
@@ -441,17 +441,19 @@ void PID_Deinit(void) {
 
 void PID_Init(void) {
   /*! \todo determine your PID values */
-  speedLeftConfig.pFactor100 = 0;
+  speedLeftConfig.pFactor100 = 1000;
   speedLeftConfig.iFactor100 = 0;
   speedLeftConfig.dFactor100 = 0;
-  speedLeftConfig.iAntiWindup = 0;
+  speedLeftConfig.iAntiWindup = 500;
+  speedLeftConfig.maxSpeedPercent = 20;
   speedLeftConfig.lastError = 0;
   speedLeftConfig.integral = 0;
 
-  speedRightConfig.pFactor100 = 0;
+  speedRightConfig.pFactor100 = 1000;
   speedRightConfig.iFactor100 = 0;
   speedRightConfig.dFactor100 = 0;
-  speedRightConfig.iAntiWindup = 0;
+  speedRightConfig.iAntiWindup = 500;
+  speedRightConfig.maxSpeedPercent = 20;
   speedRightConfig.lastError = 0;
   speedRightConfig.integral = 0;
 

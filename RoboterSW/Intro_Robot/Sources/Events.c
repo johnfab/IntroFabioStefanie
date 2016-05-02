@@ -41,6 +41,8 @@ extern "C" {
 #include "Debounce.h"
 #include "KeyDebounce.h"
 #include "Tacho.h"
+#include "Pid.h"
+
 
 /*
 ** ===================================================================
