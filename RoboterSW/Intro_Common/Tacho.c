@@ -63,6 +63,7 @@ void TACHO_CalcSpeed(void) {
     newRight = (int32_t)TACHO_RightPosHistory[TACHO_PosHistory_Index-1];
   }
   ExitCritical();
+
   deltaLeft = oldLeft-newLeft; /* delta of oldest position and most recent one */
   /* use unsigned arithmetic */
   if (deltaLeft < 0) {
@@ -88,6 +89,8 @@ void TACHO_CalcSpeed(void) {
   if (negRight) {
     speedRight = -speedRight;
   }
+
+
   TACHO_currLeftSpeed = -speedLeft; /* store current speed in global variable */
   TACHO_currRightSpeed = -speedRight; /* store current speed in global variable */
 }

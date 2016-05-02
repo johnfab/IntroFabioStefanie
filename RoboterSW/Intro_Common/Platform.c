@@ -95,14 +95,14 @@ void PL_Init(void) {
 #if PL_CONFIG_HAS_MOTOR
   MOT_Init();
 #endif
-#if PL_CONFIG_HAS_DRIVE
-  DRV_Init();
+#if PL_CONFIG_HAS_MOTOR_TACHO
+  TACHO_Init();
 #endif
 #if PL_CONFIG_HAS_PID
   PID_Init();
 #endif
-#if PL_CONFIG_HAS_MOTOR_TACHO
-  TACHO_Init();
+#if PL_CONFIG_HAS_DRIVE
+DRV_Init();
 #endif
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Init();
@@ -114,14 +114,14 @@ void PL_Deinit(void) {
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Deinit();
 #endif
-#if PL_CONFIG_HAS_MOTOR_TACHO
-  TACHO_Deinit();
+#if PL_CONFIG_HAS_DRIVE
+  DRV_Deinit();
 #endif
 #if PL_CONFIG_HAS_PID
   PID_Deinit();
 #endif
-#if PL_CONFIG_HAS_DRIVE
-  DRV_Deinit();
+#if PL_CONFIG_HAS_MOTOR_TACHO
+  TACHO_Deinit();
 #endif
 #if PL_CONFIG_HAS_MOTOR
   MOT_Deinit();

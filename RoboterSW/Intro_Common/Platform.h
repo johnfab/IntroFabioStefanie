@@ -66,11 +66,12 @@
 
 /* Platform spezifisch*/
 #if PL_CONFIG_BOARD_IS_ROBO
-	#define PL_CONFIG_HAS_REFLECTANCE (0) /* relflectance sensor support */
-	#define PL_CONFIG_HAS_MOTOR       (0) /* motor support */
-	#define PL_CONFIG_HAS_QUADRATURE  (0) /* quadratur encoder support */
-	#define PL_CONFIG_HAS_MOTOR_TACHO (0) /* motor tacho support */
-	#define PL_CONFIG_HAS_PID         (0) /* PID support */
+	#define PL CONFIG HAS LINE SENSOR (1) /* line sensor support */
+	#define PL_CONFIG_HAS_REFLECTANCE (1) /* relflectance sensor support */
+	#define PL_CONFIG_HAS_MOTOR       (1) /* motor support */
+	#define PL_CONFIG_HAS_QUADRATURE  (1) /* quadratur encoder support */
+	#define PL_CONFIG_HAS_MOTOR_TACHO (1) /* motor tacho support */
+	#define PL_CONFIG_HAS_PID         (1) /* PID support */
 	#define PL_CONFIG_HAS_DRIVE       (0) /* drive support */
 	#define PL_CONFIG_HAS_TURN        (0) /* turn support */
 	#define PL_CONFIG_HAS_LINE_FOLLOW (0) /* line follower support */

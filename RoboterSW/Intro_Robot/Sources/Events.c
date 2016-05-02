@@ -40,6 +40,7 @@ extern "C" {
 #include "Timer.h"
 #include "Debounce.h"
 #include "KeyDebounce.h"
+#include "Tacho.h"
 
 /*
 ** ===================================================================
@@ -143,7 +144,8 @@ void FRTOS1_vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName)
 void FRTOS1_vApplicationTickHook(void)
 {
   /* Called for every RTOS tick. */
-	TMR_OnInterrupt(); // With this a Timer module can be saved
+	TMR_OnInterrupt();	// With this a Timer module can be saved
+	TACHO_Sample();		// Sample the Quadrature Signals for the Tacho
 }
 
 /*
@@ -187,6 +189,28 @@ void FRTOS1_vApplicationMallocFailedHook(void)
   taskDISABLE_INTERRUPTS();
   /* Write your code here ... */
   for(;;) {}
+}
+
+/*
+** ===================================================================
+**     Event       :  QuadIntTmr_OnInterrupt (module Events)
+**
+**     Component   :  QuadIntTmr [TimerInt]
+**     Description :
+**         When a timer interrupt occurs this event is called (only
+**         when the component is enabled - <Enable> and the events are
+**         enabled - <EnableEvent>). This event is enabled only if a
+**         <interrupt service/event> is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void QuadIntTmr_OnInterrupt(void)
+{
+#if PL_CONFIG_HAS_QUADRATURE
+	Q4CLeft_Sample();
+	Q4CRight_Sample();
+#endif
 }
 
 /* END Events */

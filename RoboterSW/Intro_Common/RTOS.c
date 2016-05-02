@@ -13,13 +13,23 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Application.h"
+#include "ShellQueue.h"
 
 /* Main Task */
 static void Task_MainTask (void *pvParameters) {
 	(void)pvParameters; /* avoid compiler warning */
+	CLS1_SendStr("Hello Fabio\r\n", CLS1_GetStdio()->stdOut);
 	for (;;) {
 		LED1_Neg();
 		FRTOS1_vTaskDelay(500/portTICK_PERIOD_MS);
+#if 0
+		static int i = 0;
+		i++;
+		if (i == 10) {
+			i = 0;
+			SQUEUE_SendString("Hello Mr. Fabio\r\n");
+		}
+#endif
 	}
 }
 

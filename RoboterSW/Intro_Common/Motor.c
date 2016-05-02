@@ -34,12 +34,10 @@ static uint8_t PWMRSetRatio16(uint16_t ratio) {
 }
 
 static void DirLPutVal(bool val) {
-  /*! \todo Check if directions are working properly with your hardware */
-  DIRL_PutVal(val);
+  DIRL_PutVal(!val);
 }
 
 static void DirRPutVal(bool val) {
-  /*! \todo Check if directions are working properly with your hardware */
   DIRR_PutVal(val);
 }
 
@@ -53,7 +51,7 @@ uint16_t MOT_GetVal(MOT_MotorDevice *motor) {
 }
 
 void MOT_SetSpeedPercent(MOT_MotorDevice *motor, MOT_SpeedPercent percent) {
-  /*! \todo See lab guide about this function */
+  /* See lab guide about this function */
   uint32_t val;
 
   if (percent>100) { /* make sure we are within 0..100 */
@@ -111,12 +109,37 @@ MOT_Direction MOT_GetDirection(MOT_MotorDevice *motor) {
   }
 }
 
+void MOT_DriveForward(){
+	MOT_SetDirection(&motorL, MOT_DIR_FORWARD);
+	MOT_SetDirection(&motorR, MOT_DIR_FORWARD);
+}
+
+void MOT_DriveBackward(){
+	MOT_SetDirection(&motorL, MOT_DIR_BACKWARD);
+	MOT_SetDirection(&motorR, MOT_DIR_BACKWARD);
+}
+
+/* Debugging Function */
+void MOT_StartMotors(){
+	MOT_SetSpeedPercent(&motorL, 15);
+	MOT_SetSpeedPercent(&motorR, 15);
+}
+
+/* Debugging Function */
+void MOT_StopMotors(){
+	MOT_SetSpeedPercent(&motorL, 0);
+	MOT_SetSpeedPercent(&motorR, 0);
+}
+
 #if PL_CONFIG_HAS_SHELL
 static void MOT_PrintHelp(const CLS1_StdIOType *io) {
   CLS1_SendHelpStr((unsigned char*)"motor", (unsigned char*)"Group of motor commands\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  help|status", (unsigned char*)"Shows motor help or status\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  (L|R) forward|backward", (unsigned char*)"Change motor direction\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  (L|R) duty <number>", (unsigned char*)"Change motor PWM (-100..+100)%\r\n", io->stdOut);
+  CLS1_SendHelpStr((unsigned char*)"  motor both go", (unsigned char*)"Starts the motors forward with 15% duty\r\n", io->stdOut);
+  CLS1_SendHelpStr((unsigned char*)"  motor both (fw|bw)", (unsigned char*)"Sets motors direction\r\n", io->stdOut);
+  CLS1_SendHelpStr((unsigned char*)"  motor stop", (unsigned char*)"Stops the motors\r\n", io->stdOut);
 }
 
 static void MOT_PrintStatus(const CLS1_StdIOType *io) {
@@ -160,6 +183,18 @@ uint8_t MOT_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
   } else if (UTIL1_strcmp((char*)cmd, (char*)"motor R forward")==0) {
     MOT_SetDirection(&motorR, MOT_DIR_FORWARD);
     *handled = TRUE;
+  } else if (UTIL1_strcmp((char*)cmd, (char*)"motor both go")==0) {
+	    MOT_StartMotors();
+	    *handled = TRUE;
+  } else if (UTIL1_strcmp((char*)cmd, (char*)"motor both fw")==0) {
+	    MOT_DriveForward();
+	    *handled = TRUE;
+  } else if (UTIL1_strcmp((char*)cmd, (char*)"motor both bw")==0) {
+	    MOT_DriveBackward();
+	    *handled = TRUE;
+  } else if (UTIL1_strcmp((char*)cmd, (char*)"motor stop")==0) {
+	    MOT_StopMotors();
+	    *handled = TRUE;
   } else if (UTIL1_strcmp((char*)cmd, (char*)"motor L backward")==0) {
     MOT_SetDirection(&motorL, MOT_DIR_BACKWARD);
     *handled = TRUE;
@@ -191,6 +226,10 @@ uint8_t MOT_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
 
 void MOT_Deinit(void) {
   /*! \todo What could you do here? */
+	MOT_SetSpeedPercent(&motorL, 0);
+	MOT_SetSpeedPercent(&motorR, 0);
+	PWML_Disable();
+	PWMR_Disable();
 }
 
 void MOT_Init(void) {

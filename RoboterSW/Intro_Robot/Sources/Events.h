@@ -73,13 +73,31 @@
 #include "BitIoLdd9.h"
 #include "C22.h"
 #include "BitIoLdd10.h"
-#include "QUADTU.h"
+#include "QuadIntTmr.h"
+#include "TimerIntLdd1.h"
+#include "TU1.h"
 #include "USB1.h"
 #include "USB0.h"
 #include "CDC1.h"
 #include "Tx1.h"
 #include "Rx1.h"
 #include "TMOUT1.h"
+#include "LED_IR.h"
+#include "LEDpin3.h"
+#include "BitIoLdd11.h"
+#include "RefCnt.h"
+#include "IR1.h"
+#include "BitIoLdd12.h"
+#include "IR2.h"
+#include "BitIoLdd13.h"
+#include "IR3.h"
+#include "BitIoLdd14.h"
+#include "IR4.h"
+#include "BitIoLdd15.h"
+#include "IR5.h"
+#include "BitIoLdd16.h"
+#include "IR6.h"
+#include "BitIoLdd17.h"
 #include "PTA.h"
 
 #ifdef __cplusplus
@@ -190,6 +208,22 @@ void FRTOS1_vApplicationMallocFailedHook(void);
 **     Returns     : Nothing
 ** ===================================================================
 */
+
+/*
+** ===================================================================
+**     Event       :  QuadIntTmr_OnInterrupt (module Events)
+**
+**     Component   :  QuadIntTmr [TimerInt]
+**     Description :
+**         When a timer interrupt occurs this event is called (only
+**         when the component is enabled - <Enable> and the events are
+**         enabled - <EnableEvent>). This event is enabled only if a
+**         <interrupt service/event> is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void QuadIntTmr_OnInterrupt(void);
 
 /* END Events */
 

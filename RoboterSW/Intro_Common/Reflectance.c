@@ -138,7 +138,6 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   uint8_t cnt; /* number of sensor */
   uint8_t i;
   RefCnt_TValueType timerVal;
-  /*! \todo Consider reentrancy and mutual exclusion! */
 
   LED_IR_On(); /* IR LED's on */
   WAIT1_Waitus(200);
@@ -148,13 +147,14 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
     raw[i] = MAX_SENSOR_VALUE;
   }
   WAIT1_Waitus(50); /* give at least 10 us to charge the capacitor */
-  for(i=0;i<REF_NOF_SENSORS;i++) {
-    SensorFctArray[i].SetInput(); /* turn I/O line as input */
-  }
 
   /* Enter Critical Section - TIME SENSITIV TASK */
   CS1_CriticalVariable();
   CS1_EnterCritical();
+
+  for(i=0;i<REF_NOF_SENSORS;i++) {
+    SensorFctArray[i].SetInput(); /* turn I/O line as input */
+  }
   (void)RefCnt_ResetCounter(timerHandle); /* reset timer counter */
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
@@ -174,6 +174,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   } while(cnt!=REF_NOF_SENSORS);
   /* Exit Critical Section*/
   CS1_ExitCritical();
+
   LED_IR_Off(); /* IR LED's off */
 }
 

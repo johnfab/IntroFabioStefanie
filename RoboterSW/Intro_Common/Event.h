@@ -54,6 +54,9 @@ typedef enum EVNT_Handle {
   EVNT_SW7_RELEASED,
   EVNT_SW7_LPRESSED,
   #endif
+#if PL_CONFIG_HAS_REFLECTANCE
+  EVNT_REF_START_STOP_CALIBRATION,
+  #endif
 #endif
   EVNT_NOF_EVENTS       /*!< Must be last one! */
 } EVNT_Handle;

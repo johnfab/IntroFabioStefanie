@@ -17,12 +17,11 @@ static xQueueHandle SQUEUE_Queue;
   #define SQUEUE_LENGTH      48 /* items in queue, that's my buffer size */
   #define SQUEUE_ITEM_SIZE   1  /* each item is a single character */
 #else
-  #define SQUEUE_LENGTH      5 /* items in queue */
+  #define SQUEUE_LENGTH      8 /* items in queue */
   #define SQUEUE_ITEM_SIZE   sizeof(char_t*) /* each item is a char pointer to a string, allocated in the heap */
 #endif
 
 void SQUEUE_SendString(const unsigned char *str) {
-  /*! \todo Understand usage of queues */
 #if PL_CONFIG_SQUEUE_SINGLE_CHAR
   while(*str!='\0') {
     if (FRTOS1_xQueueSendToBack(SQUEUE_Queue, str, 100/portTICK_PERIOD_MS)!=pdPASS) {

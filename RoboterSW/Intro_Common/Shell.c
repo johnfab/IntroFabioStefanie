@@ -363,6 +363,8 @@ static void ShellTask(void *pvParameters) {
   (void)CLS1_ParseWithCommandTable((unsigned char*)CLS1_CMD_HELP, ioLocal, CmdParserTable);
 #endif
 #endif
+
+
   for(;;) {
 #if SHELL_COMBINED_STDIO
     (void)CLS1_ReadAndParseWithCommandTable(combined_buf, sizeof(combined_buf), &CombineStdio, CmdParserTable);
