@@ -54,6 +54,9 @@
 #if PL_CONFIG_HAS_MOTOR_TACHO
   #include "Tacho.h"
 #endif
+#if PL_CONFIG_HAS_TURN
+  #include "Turn.h"
+#endif
 #if PL_CONFIG_HAS_LINE_FOLLOW
   #include "LineFollow.h"
 #endif
@@ -104,6 +107,9 @@ void PL_Init(void) {
 #if PL_CONFIG_HAS_DRIVE
   DRV_Init();
 #endif
+#if PL_CONFIG_HAS_TURN
+  TURN_Init();
+#endif
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Init();
 #endif
@@ -113,6 +119,9 @@ void PL_Init(void) {
 void PL_Deinit(void) {
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Deinit();
+#endif
+#if PL_CONFIG_HAS_TURN
+  TURN_Deinit();
 #endif
 #if PL_CONFIG_HAS_DRIVE
   DRV_Deinit();
