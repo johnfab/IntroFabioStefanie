@@ -62,7 +62,7 @@
 #define PL_CONFIG_HAS_SHELL_QUEUE (1 && PL_CONFIG_HAS_SHELL) /* shell queue support */
 #define PL_CONFIG_HAS_BLUETOOTH   (1) /* bluetooth support */
 #define PL_CONFIG_HAS_USB_CDC     (1) /* USB CDC support */
-#define PL_CONFIG_HAS_SEGGER_RTT  (1) /* Segger RTT support */
+#define PL_CONFIG_HAS_SEGGER_RTT  (0) /* Segger RTT support */
 
 /* Platform spezifisch*/
 #if PL_CONFIG_BOARD_IS_ROBO

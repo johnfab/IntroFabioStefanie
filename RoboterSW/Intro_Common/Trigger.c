@@ -72,10 +72,11 @@ void TRG_AddTick(void) {
     }
   } /* for */
   CS1_ExitCritical();
-  for(counter=0; counter++; counter<10)
-	{
-	  if(CheckCallbacks()==FALSE) /* while we have callbacks, re-iterate the list as this may have added new triggers at the current time */
+
+  for(counter=0; counter<10; counter++) {
+	  if(CheckCallbacks()==FALSE) { /* while we have callbacks, re-iterate the list as this may have added new triggers at the current time */
 		return;
+	  }
 	}
 }
 
