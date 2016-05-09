@@ -132,6 +132,7 @@ int main(void)
 #if PL_CONFIG_HAS_RTOS
   RTOS_Init(); /* Init the RTOS */
   PL_Init();
+  EVNT_SetEvent(EVNT_STARTUP);
   RTOS_Run(); /* Start the RTOS - normally does not exit */
 #endif
   APP_Start(); /* Fallback Code */

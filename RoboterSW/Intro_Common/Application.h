@@ -9,7 +9,9 @@
 #define SOURCES_FS2016_COMMON_APPLICATION_H_
 
 #include "LED.h"
+#include "Event.h"
 
+void APP_EventHandler(EVNT_Handle event);
 void APP_Start(void);
 
 #endif /* SOURCES_FS2016_COMMON_APPLICATION_H_ */

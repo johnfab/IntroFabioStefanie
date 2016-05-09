@@ -23,9 +23,15 @@
 #if PL_CONFIG_HAS_SHELL
   #include "Shell.h"
 #endif
+#if PL_CONFIG_HAS_LINE_FOLLOW
+	#include "LineFollow.h"
+#endif
+#if PL_CONFIG_HAS_REFLECTANCE
+  #include "Reflectance.h"
+#endif
 
 #if PL_CONFIG_HAS_EVENTS
-static void APP_EventHandler(EVNT_Handle event) {
+void APP_EventHandler(EVNT_Handle event) {
   switch(event) {
   case EVNT_STARTUP:
     LED1_On(); /* just do something */
@@ -41,9 +47,15 @@ static void APP_EventHandler(EVNT_Handle event) {
   case EVNT_SW1_PRESSED:
     LED2_Neg();
 	SHELL_SendString("SW1 pressed\r\n");
-#if PL_CONFIG_HAS_BUZZER
-    BUZ_PlayTune(BUZ_TUNE_BUTTON);
-#endif
+	#if PL_CONFIG_HAS_BUZZER
+	    BUZ_PlayTune(BUZ_TUNE_BUTTON);
+	#endif
+	#if PL_CONFIG_BOARD_IS_ROBO
+	    // What should the robot do on a short press
+	    #if PL_CONFIG_HAS_LINE_FOLLOW
+	    	LF_StartStopFollowing();
+	    #endif
+	#endif
 	break;
   case EVNT_SW1_RELEASED:
     SHELL_SendString("SW1 released\r\n");
@@ -52,9 +64,15 @@ static void APP_EventHandler(EVNT_Handle event) {
 	LED2_Off();
 	//CLS1_SendStr("SW1 long pressed\r\n", CLS1_GetStdio()->stdOut);
 	SHELL_SendString("SW1 long pressed\r\n");
-#if PL_CONFIG_HAS_BUZZER
-    BUZ_PlayTune(BUZ_TUNE_BUTTON_LONG);
-#endif
+	#if PL_CONFIG_HAS_BUZZER
+    	BUZ_PlayTune(BUZ_TUNE_BUTTON_LONG);
+	#endif
+	#if PL_CONFIG_BOARD_IS_ROBO
+	    // What should the robot do on a long press
+	    #if PL_CONFIG_HAS_LINE_FOLLOW
+	    	REF_CalibrateStartStop();
+	    #endif
+	#endif
 	break;
  #endif
  #if PL_CONFIG_NOF_KEYS>=2
