@@ -60,12 +60,12 @@
 #define PL_CONFIG_HAS_RTOS        (1) /* RTOS support */
 #define PL_CONFIG_HAS_SHELL       (1) /* shell support */
 #define PL_CONFIG_HAS_SHELL_QUEUE (1 && PL_CONFIG_HAS_SHELL) /* shell queue support */
-#define PL_CONFIG_HAS_BLUETOOTH   (1) /* bluetooth support */
-#define PL_CONFIG_HAS_USB_CDC     (1) /* USB CDC support */
-#define PL_CONFIG_HAS_SEGGER_RTT  (0) /* Segger RTT support */
 
 /* Platform spezifisch*/
 #if PL_CONFIG_BOARD_IS_ROBO
+	#define PL_CONFIG_HAS_BLUETOOTH   (1) /* bluetooth support */
+	#define PL_CONFIG_HAS_USB_CDC     (1) /* USB CDC support */
+	#define PL_CONFIG_HAS_SEGGER_RTT  (0) /* Segger RTT support */
 	#define PL CONFIG HAS LINE SENSOR (1) /* line sensor support */
 	#define PL_CONFIG_HAS_REFLECTANCE (1) /* relflectance sensor support */
 	#define PL_CONFIG_HAS_MOTOR       (1) /* motor support */
@@ -75,13 +75,18 @@
 	#define PL_CONFIG_HAS_DRIVE       (1) /* drive support */
 	#define PL_CONFIG_HAS_TURN        (1) /* turn support */
 	#define PL_CONFIG_HAS_LINE_FOLLOW (1) /* line follower support */
-	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */
-	#define RNET_CONFIG_REMOTE_STDIO  (0 && PL_CONFIG_HAS_RADIO) /* radio stdio support */
+	#define PL_CONFIG_HAS_RADIO       (1) /* radio support */
+	#define RNET_CONFIG_REMOTE_STDIO  (1 && PL_CONFIG_HAS_RADIO) /* radio stdio support */
 	#define PL_CONFIG_HAS_REMOTE      (0 && PL_CONFIG_HAS_RADIO) /* remote support */
 	#define PL_CONFIG_HAS_LINE_MAZE   (0 && PL_CONFIG_HAS_LINE_FOLLOW) /* maze solving support */
 	#define PL_CONFIG_HAS_CONFIG_NVM  (0) /* non volatile memory support */
+
 #elif PL_CONFIG_BOARD_IS_FRDM
-	// Config fuer FRDM Board ToDo: Steffi
+	#define PL_CONFIG_HAS_USB_CDC     (0) /* USB CDC support */
+	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */
+	#define RNET_CONFIG_REMOTE_STDIO  (0 && PL_CONFIG_HAS_RADIO) /* radio stdio support */
+	#define PL_CONFIG_HAS_CONFIG_NVM  (0) /* non volatile memory support */
+
 #endif
 
 /* interface */

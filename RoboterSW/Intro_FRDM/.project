@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>FS2016_FRDM</name>
+	<name>Intro_FRDM</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -37,4 +37,10 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Intro_Common</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>copy_PARENT</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/GitHub/IntroFabioStefanie/RoboterSW</value>
+		</variable>
+	</variableList>
 </projectDescription>

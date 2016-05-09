@@ -68,6 +68,9 @@
 #if RNET_CONFIG_REMOTE_STDIO
 	#include "RStdIO.h"
 #endif
+#if PL_CONFIG_HAS_REMOTE
+	#include "Remote.h"
+#endif
 #if PL_CONFIG_HAS_CONFIG_NVM
 	#include "NVM_Config.h"
 #endif
@@ -134,6 +137,9 @@ void PL_Init(void) {
 #if RNET_CONFIG_REMOTE_STDIO
 	RSTDIO_Init();
 #endif
+#if PL_CONFIG_HAS_REMOTE
+	REMOTE_Init();
+#endif
 #if PL_CONFIG_HAS_CONFIG_NVM
 	NVMC_Init();
 #endif
@@ -149,6 +155,9 @@ void PL_Deinit(void) {
 #endif
 #if PL_CONFIG_HAS_CONFIG_NVM
 	NVMC_Deinit();
+#endif
+#if PL_CONFIG_HAS_REMOTE
+	REMOTE_Deinit();
 #endif
 #if RNET_CONFIG_REMOTE_STDIO
 	RSTDIO_Deinit();
@@ -184,7 +193,7 @@ void PL_Deinit(void) {
   SQUEUE_Deinit();
 #endif
 #if PL_CONFIG_HAS_SHELL
-  CLS1_Deinit();
+  SHELL_Deinit();
 #endif
 #if PL_CONFIG_HAS_DEBOUNCE
   KEYDBNC_Deinit();

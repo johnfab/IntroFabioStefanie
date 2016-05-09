@@ -14,6 +14,7 @@
 #include "Keys.h"
 #include "Application.h"
 #include "ShellQueue.h"
+#include "CLS1.h"
 
 /* Main Task */
 static void Task_MainTask (void *pvParameters) {

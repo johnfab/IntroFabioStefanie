@@ -34,8 +34,6 @@
 #include "BitIoLdd1.h"
 #include "LEDPin2.h"
 #include "BitIoLdd2.h"
-#include "LEDPin3.h"
-#include "BitIoLdd3.h"
 #include "WAIT1.h"
 #include "CS1.h"
 #include "HF1.h"
@@ -56,9 +54,6 @@
 #include "AD1.h"
 #include "AdcLdd1.h"
 #include "KSDK1.h"
-#include "TI1.h"
-#include "TimerIntLdd1.h"
-#include "TU1.h"
 #include "AS1.h"
 #include "ASerialLdd2.h"
 #include "CLS1.h"
@@ -71,6 +66,7 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "Application.h"
+#include "RTOS.h"
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
@@ -81,7 +77,13 @@ int main(void)
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
-  APP_Start();
+#if PL_CONFIG_HAS_RTOS
+  RTOS_Init(); /* Init the RTOS */
+  PL_Init();
+  EVNT_SetEvent(EVNT_STARTUP);
+  RTOS_Run(); /* Start the RTOS - normally does not exit */
+#endif
+  APP_Start(); /* Fallback Solution */
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
