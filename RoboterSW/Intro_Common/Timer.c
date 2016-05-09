@@ -11,6 +11,9 @@
 #include "Timer.h"
 #include "Event.h"
 #include "Trigger.h"
+#if PL_CONFIG_HAS_MOTOR_TACHO
+  #include "Tacho.h"
+#endif
 
 void TMR_OnInterrupt(void) {
   /* this one gets called from an interrupt!!!! */
@@ -26,6 +29,10 @@ void TMR_OnInterrupt(void) {
 #if PL_CONFIG_HAS_TRIGGER
   TRG_AddTick();
 #endif
+#if PL_CONFIG_HAS_MOTOR_TACHO
+	TACHO_Sample();		// Sample the Quadrature Signals for the Tacho
+#endif
+
 
 }
 

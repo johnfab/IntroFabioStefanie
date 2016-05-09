@@ -23,6 +23,53 @@ typedef struct {
 
 static volatile BUZ_TrgInfo trgInfo;
 
+typedef struct {
+  int freq; /* frequency */
+  int ms; /* milliseconds */
+} BUZ_Tune;
+static const BUZ_Tune MelodyWelcome[] =
+{ /* freq, ms */
+    {300,500},
+    {500,200},
+    {300,100},
+    {200,300},
+    {500,400},
+    {300,100},
+    {200,300},
+    {300,100},
+    {200,300},
+    {500,400},
+};
+
+static const BUZ_Tune MelodyButton[] =
+{ /* freq, ms */
+    {200,100},
+    {600,100},
+};
+
+static const BUZ_Tune MelodyButtonLong[] =
+{ /* freq, ms */
+    {500,50},
+    {100,100},
+    {300,50},
+    {150,50},
+    {450,50},
+    {500,50},
+    {250,200},
+};
+
+typedef struct {
+  int idx; /* current index */
+  int maxIdx; /* maximum index */
+  BUZ_TrgInfo trgInfo;
+  const BUZ_Tune *melody;
+} MelodyDesc;
+
+static MelodyDesc BUZ_Melodies[] = {
+  {0, sizeof(MelodyWelcome)/sizeof(MelodyWelcome[0]),         0, 0, MelodyWelcome}, /* BUZ_TUNE_WELCOME */
+  {0, sizeof(MelodyButton)/sizeof(MelodyButton[0]),           0, 0, MelodyButton}, /* BUZ_TUNE_BUTTON */
+  {0, sizeof(MelodyButtonLong)/sizeof(MelodyButtonLong[0]),   0, 0, MelodyButtonLong}, /* BUZ_TUNE_BUTTON_LONG */
+};
 static void BUZ_Toggle(void *dataPtr) {
   BUZ_TrgInfo *trgInfo = (BUZ_TrgInfo *)dataPtr;
   
@@ -46,40 +93,23 @@ uint8_t BUZ_Beep(uint16_t freq, uint16_t durationMs) {
   }
 }
 
-typedef struct {
-  int freq; /* frequency */
-  int ms; /* milliseconds */
-} BUZ_Tune;
-
-static const BUZ_Tune Melody[] =
-{ /* freq, ms */
-    {490,150},
-    {1,10},
-    {490,150},
-	{1,150},
-	{490,150},
-	{1,150},
-	{320,150},
-	{1,10},
-	{490,150},
-	{1,150},
-	{600,150},
-	{1,450},
-	{200,500}
-};
-
 static void BUZ_Play(void *dataPtr) {
-  int idx = (int)dataPtr;
+  MelodyDesc *melody = (MelodyDesc*)dataPtr;
 
-  BUZ_Beep(Melody[idx].freq, Melody[idx].ms);
-  idx++;
-  if (idx<(sizeof(Melody)/sizeof(Melody[0]))) {
-    TRG_SetTrigger(TRG_BUZ_TUNE, Melody[idx-1].ms/TRG_TICKS_MS, BUZ_Play, (void*)idx);
+  BUZ_Beep(melody->melody[melody->idx].freq, melody->melody[melody->idx].ms);
+  melody->idx++;
+  if (melody->idx<melody->maxIdx) {
+
+    TRG_SetTrigger(TRG_BUZ_TUNE, melody->melody[melody->idx-1].ms/TRG_TICKS_MS, BUZ_Play, (void*)melody);
   }
 }
 
-uint8_t BUZ_PlayTune(void) {
-  return TRG_SetTrigger(TRG_BUZ_TUNE, 1, BUZ_Play, (void*)0);
+uint8_t BUZ_PlayTune(BUZ_Tunes tune) {
+  if (tune>=BUZ_TUNE_NOF_TUNES) {
+    return ERR_OVERFLOW;
+  }
+  BUZ_Melodies[tune].idx = 0; /* reset index */
+  return TRG_SetTrigger(TRG_BUZ_TUNE, 0, BUZ_Play, (void*)&BUZ_Melodies[tune]);
 }
 
 
@@ -119,7 +149,7 @@ uint8_t BUZ_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_Std
     }
   } else if (UTIL1_strcmp((char*)cmd, (char*)"buzzer play tune")==0) {
     *handled = TRUE;
-    return BUZ_PlayTune();
+    return BUZ_PlayTune(BUZ_TUNE_WELCOME);
   }
   return ERR_OK;
 }

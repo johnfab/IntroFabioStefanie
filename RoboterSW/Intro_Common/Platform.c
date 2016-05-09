@@ -60,6 +60,21 @@
 #if PL_CONFIG_HAS_LINE_FOLLOW
   #include "LineFollow.h"
 #endif
+#if PL_CONFIG_HAS_RADIO
+	#include "RNET1.h"
+	#include "RNet_App.h"
+	#include "RNetConf.h"
+#endif
+#if RNET_CONFIG_REMOTE_STDIO
+	#include "RStdIO.h"
+#endif
+#if PL_CONFIG_HAS_CONFIG_NVM
+	#include "NVM_Config.h"
+#endif
+#if PL_CONFIG_HAS_LINE_MAZE
+  #include "Maze.h"
+#endif
+
 
 void PL_Init(void) {
 #if PL_CONFIG_HAS_LEDS
@@ -113,10 +128,34 @@ void PL_Init(void) {
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Init();
 #endif
+#if PL_CONFIG_HAS_RADIO
+	RNETA_Init();
+#endif
+#if RNET_CONFIG_REMOTE_STDIO
+	RSTDIO_Init();
+#endif
+#if PL_CONFIG_HAS_CONFIG_NVM
+	NVMC_Init();
+#endif
+#if PL_CONFIG_HAS_LINE_MAZE
+	MAZE_Init();
+#endif
 }
 
 
 void PL_Deinit(void) {
+#if PL_CONFIG_HAS_LINE_MAZE
+	MAZE_Deinit();
+#endif
+#if PL_CONFIG_HAS_CONFIG_NVM
+	NVMC_Deinit();
+#endif
+#if RNET_CONFIG_REMOTE_STDIO
+	RSTDIO_Deinit();
+#endif
+#if PL_CONFIG_HAS_RADIO
+	RNETA_Deinit();
+#endif
 #if PL_CONFIG_HAS_LINE_FOLLOW
   LF_Deinit();
 #endif

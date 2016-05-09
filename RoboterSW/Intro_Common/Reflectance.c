@@ -26,6 +26,10 @@
 #if PL_CONFIG_HAS_BUZZER
   #include "Buzzer.h"
 #endif
+#if PL_CONFIG_HAS_CONFIG_NVM
+  #include "NVM_Config.h"
+#endif
+
 
 #define REF_NOF_SENSORS       6 /* number of sensors */
 #define REF_SENSOR1_IS_LEFT   1 /* sensor number one is on the left side */
@@ -58,7 +62,7 @@ typedef struct SensorFctType_ {
 } SensorFctType;
 
 typedef uint16_t SensorTimeType;
-#define MAX_SENSOR_VALUE  ((SensorTimeType)-1)
+#define MAX_SENSOR_VALUE (0xEB00) //((SensorTimeType)-1)
 
 /* calibration min/max values */
 typedef struct SensorCalibT_ {
@@ -138,19 +142,20 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   uint8_t cnt; /* number of sensor */
   uint8_t i;
   RefCnt_TValueType timerVal;
-
   /* Enter Critical Section - TIME SENSITIV TASK */
-    CS1_CriticalVariable();
-    CS1_EnterCritical();
+      CS1_CriticalVariable();
 
   LED_IR_On(); /* IR LED's on */
+
   WAIT1_Waitus(200);
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetOutput(); /* turn I/O line as output */
     SensorFctArray[i].SetVal(); /* put high */
     raw[i] = MAX_SENSOR_VALUE;
   }
-  WAIT1_Waitus(50); /* give at least 10 us to charge the capacitor */
+  WAIT1_Waitus(10); /* give at least 10 us to charge the capacitor */
+
+  CS1_EnterCritical();
 
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
@@ -158,7 +163,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   (void)RefCnt_ResetCounter(timerHandle); /* reset timer counter */
   do {
     timerVal = RefCnt_GetCounterValue(timerHandle);
-    if (timerVal>0x5000) { /*! \todo You might need to adjust this! */
+    if (timerVal>0xEB00) { /*! \todo You might need to adjust this! */
       break; /* timeout */
     }
     cnt = 0;
@@ -172,6 +177,7 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
       }
     }
   } while(cnt!=REF_NOF_SENSORS);
+
   /* Exit Critical Section*/
   CS1_ExitCritical();
 
@@ -501,8 +507,24 @@ static void REF_StateMachine(void) {
 
   switch (refState) {
     case REF_STATE_INIT:
-      SHELL_SendString((unsigned char*)"INFO: No calibration data present.\r\n");
-      refState = REF_STATE_NOT_CALIBRATED;
+	#if PL_CONFIG_HAS_CONFIG_NVM
+    	{
+    		SensorCalibT *ptr;
+
+    		ptr = (SensorCalibT*)NVMC_GetReflectanceData();
+    		if (ptr!=NULL) { /* valid data */
+    			SensorCalibMinMax = *ptr;
+    			refState = REF_STATE_READY;
+    		} else {
+    			refState = REF_STATE_NOT_CALIBRATED;
+    		}
+    	}
+    #else
+    	{
+    		SHELL_SendString((unsigned char*)"INFO: No calibration data present.\r\n");
+    		refState = REF_STATE_NOT_CALIBRATED;
+    	}
+    #endif
       break;
       
     case REF_STATE_NOT_CALIBRATED:
@@ -539,6 +561,13 @@ static void REF_StateMachine(void) {
     
     case REF_STATE_STOP_CALIBRATION:
       SHELL_SendString((unsigned char*)"...stopping calibration.\r\n");
+	#if PL_CONFIG_HAS_CONFIG_NVM
+      if (NVMC_SaveReflectanceData(&SensorCalibMinMax, sizeof(SensorCalibMinMax))!=ERR_OK) {
+        SHELL_SendString((unsigned char*)"Flashing calibration data FAILED!\r\n");
+      } else {
+        SHELL_SendString((unsigned char*)"Stored calibration data.\r\n");
+      }
+	#endif
       refState = REF_STATE_READY;
       break;
         

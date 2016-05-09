@@ -147,7 +147,6 @@ void FRTOS1_vApplicationTickHook(void)
 {
   /* Called for every RTOS tick. */
 	TMR_OnInterrupt();	// With this a Timer module can be saved
-	TACHO_Sample();		// Sample the Quadrature Signals for the Tacho
 }
 
 /*
@@ -213,6 +212,43 @@ void QuadIntTmr_OnInterrupt(void)
 	Q4CLeft_Sample();
 	Q4CRight_Sample();
 #endif
+}
+
+/*
+** ===================================================================
+**     Event       :  RNET1_OnRadioEvent (module Events)
+**
+**     Component   :  RNET1 [RNet]
+**     Description :
+**         Event created for various radio states, like timeout, ack
+**         received, data sent, ...
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         event           - 
+**     Returns     : Nothing
+** ===================================================================
+*/
+void RNET1_OnRadioEvent(RNET1_RadioEvent event)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  IFsh1_OnWriteEnd (module Events)
+**
+**     Component   :  IFsh1 [IntFLASH]
+*/
+/*!
+**     @brief
+**         Event is called after a write operation to FLASH memory is
+**         finished (except [SetPage]). This event is available only if
+**         an [Interrupt service/event] is selected.
+*/
+/* ===================================================================*/
+void IFsh1_OnWriteEnd(void)
+{
+  /* Write your code here ... */
 }
 
 /* END Events */

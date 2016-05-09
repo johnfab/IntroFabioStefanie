@@ -102,13 +102,13 @@ bool DRV_IsDrivingBackward(void) {
       && DRV_Status.speed.right<0;
 }
 
-static bool match(int16_t pos, int16_t target) {
-  #define MATCH_MARGIN  50
+static bool match(int32_t pos, int32_t target) {
+  #define MATCH_MARGIN  10
   return (pos>=target-MATCH_MARGIN && pos<=target+MATCH_MARGIN);
 }
 
 bool DRV_HasTurned(void) {
-  int16_t pos;
+  int32_t pos;
 
   if (FRTOS1_uxQueueMessagesWaiting(DRV_Queue)>0) {
     return FALSE; /* still messages in command queue, so there is something pending */

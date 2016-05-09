@@ -75,7 +75,19 @@
 #include "BitIoLdd10.h"
 #include "QuadIntTmr.h"
 #include "TimerIntLdd1.h"
-#include "TU1.h"
+#include "SM1.h"
+#include "SMasterLdd1.h"
+#include "RF1.h"
+#include "CE1.h"
+#include "BitIoLdd18.h"
+#include "CSN1.h"
+#include "BitIoLdd19.h"
+#include "IRQ1.h"
+#include "ExtIntLdd2.h"
+#include "RNET1.h"
+#include "TU_QuadInt.h"
+#include "IFsh1.h"
+#include "IntFlashLdd1.h"
 #include "USB1.h"
 #include "USB0.h"
 #include "CDC1.h"
@@ -224,6 +236,37 @@ void FRTOS1_vApplicationMallocFailedHook(void);
 ** ===================================================================
 */
 void QuadIntTmr_OnInterrupt(void);
+
+void RNET1_OnRadioEvent(RNET1_RadioEvent event);
+/*
+** ===================================================================
+**     Event       :  RNET1_OnRadioEvent (module Events)
+**
+**     Component   :  RNET1 [RNet]
+**     Description :
+**         Event created for various radio states, like timeout, ack
+**         received, data sent, ...
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         event           - 
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+/*
+** ===================================================================
+**     Event       :  IFsh1_OnWriteEnd (module Events)
+**
+**     Component   :  IFsh1 [IntFLASH]
+*/
+/*!
+**     @brief
+**         Event is called after a write operation to FLASH memory is
+**         finished (except [SetPage]). This event is available only if
+**         an [Interrupt service/event] is selected.
+*/
+/* ===================================================================*/
+void IFsh1_OnWriteEnd(void);
 
 /* END Events */
 

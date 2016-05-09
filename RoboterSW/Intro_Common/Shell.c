@@ -343,25 +343,26 @@ static void ShellTask(void *pvParameters) {
 #if SHELL_COMBINED_STDIO
   combined_buf[0] = '\0';
 #else
-#if PL_CONFIG_HAS_BLUETOOTH
-  bluetooth_buf[0] = '\0';
+	#if PL_CONFIG_HAS_BLUETOOTH
+  	  bluetooth_buf[0] = '\0';
+	#endif
+	#if PL_CONFIG_HAS_SEGGER_RTT
+  	  rtt_buf[0] = '\0';
+	#endif
+	#if CLS1_DEFAULT_SERIAL
+  	  localConsole_buf[0] = '\0';
+	#endif
+	#if PL_CONFIG_HAS_RADIO && RNET_CONFIG_REMOTE_STDIO
+  	  radio_cmd_buf[0] = '\0';
+	#endif
 #endif
-#if PL_CONFIG_HAS_SEGGER_RTT
-  rtt_buf[0] = '\0';
-#endif
-#if CLS1_DEFAULT_SERIAL
-  localConsole_buf[0] = '\0';
-#endif
-#if PL_CONFIG_HAS_RADIO && RNET_CONFIG_REMOTE_STDIO
-  radio_cmd_buf[0] = '\0';
-#endif
-#endif
+
 #if SHELL_COMBINED_STDIO
   (void)CLS1_ParseWithCommandTable((unsigned char*)CLS1_CMD_HELP, &CombineStdio, CmdParserTable);
 #else
-#if CLS1_DEFAULT_SERIAL
-  (void)CLS1_ParseWithCommandTable((unsigned char*)CLS1_CMD_HELP, ioLocal, CmdParserTable);
-#endif
+	#if CLS1_DEFAULT_SERIAL
+  	  (void)CLS1_ParseWithCommandTable((unsigned char*)CLS1_CMD_HELP, ioLocal, CmdParserTable);
+	#endif
 #endif
 
 

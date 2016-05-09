@@ -31,11 +31,18 @@
  */
 uint8_t BUZ_Beep(uint16_t freqHz, uint16_t durationMs);
 
+typedef enum {
+  BUZ_TUNE_WELCOME,
+  BUZ_TUNE_BUTTON,
+  BUZ_TUNE_BUTTON_LONG,
+  BUZ_TUNE_NOF_TUNES
+} BUZ_Tunes;
 /*!
  * \brief Plays a tune
+ * \param tune Tune to play
  * \return ERR_OK or error code
  */
-uint8_t BUZ_PlayTune(void);
+uint8_t BUZ_PlayTune(BUZ_Tunes tune);
 
 /*!
  * \brief Initialization of the driver

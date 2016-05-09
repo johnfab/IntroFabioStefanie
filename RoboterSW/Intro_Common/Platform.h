@@ -77,8 +77,9 @@
 	#define PL_CONFIG_HAS_LINE_FOLLOW (1) /* line follower support */
 	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */
 	#define RNET_CONFIG_REMOTE_STDIO  (0 && PL_CONFIG_HAS_RADIO) /* radio stdio support */
-	#define PL_CONFIG_HAS_REMOTE      (0) /* remote support */
-	#define PL_CONFIG_HAS_LINE_MAZE   (0) /* maze solving support */
+	#define PL_CONFIG_HAS_REMOTE      (0 && PL_CONFIG_HAS_RADIO) /* remote support */
+	#define PL_CONFIG_HAS_LINE_MAZE   (0 && PL_CONFIG_HAS_LINE_FOLLOW) /* maze solving support */
+	#define PL_CONFIG_HAS_CONFIG_NVM  (0) /* non volatile memory support */
 #elif PL_CONFIG_BOARD_IS_FRDM
 	// Config fuer FRDM Board ToDo: Steffi
 #endif
