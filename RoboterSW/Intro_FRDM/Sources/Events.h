@@ -57,8 +57,6 @@
 #include "AD1.h"
 #include "AdcLdd1.h"
 #include "KSDK1.h"
-#include "AS1.h"
-#include "ASerialLdd2.h"
 #include "CLS1.h"
 #include "UTIL1.h"
 #include "FRTOS1.h"
@@ -68,6 +66,14 @@
 #include "Tx1.h"
 #include "Rx1.h"
 #include "TMOUT1.h"
+#include "SM1.h"
+#include "SMasterLdd1.h"
+#include "RF1.h"
+#include "CE1.h"
+#include "BitIoLdd11.h"
+#include "CSN1.h"
+#include "BitIoLdd12.h"
+#include "RNET1.h"
 
 #ifdef __cplusplus
 extern "C" {
