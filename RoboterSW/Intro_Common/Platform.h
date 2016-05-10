@@ -82,7 +82,7 @@
 	#define PL_CONFIG_HAS_CONFIG_NVM  (0) /* non volatile memory support */
 
 #elif PL_CONFIG_BOARD_IS_FRDM
-	#define PL_CONFIG_HAS_USB_CDC     (0) /* USB CDC support */
+	#define PL_CONFIG_HAS_USB_CDC     (1) /* USB CDC support */
 	#define PL_CONFIG_HAS_RADIO       (0) /* radio support */
 	#define RNET_CONFIG_REMOTE_STDIO  (0 && PL_CONFIG_HAS_RADIO) /* radio stdio support */
 	#define PL_CONFIG_HAS_CONFIG_NVM  (0) /* non volatile memory support */

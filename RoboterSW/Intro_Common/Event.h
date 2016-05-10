@@ -21,7 +21,7 @@ typedef enum EVNT_Handle {
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
   EVNT_SW1_PRESSED,			// short press
-  EVNT_SW1_RELEASED,
+  EVNT_SW1_RELEASED,		// button released
   EVNT_SW1_LPRESSED,		// long press
   #endif
   #if PL_CONFIG_NOF_KEYS>=2

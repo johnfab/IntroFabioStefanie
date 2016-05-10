@@ -3,7 +3,7 @@
   <Header>
     <Name>Intro_Robot</Name>
     <SavedBy>Erich Styger</SavedBy>
-    <ModificationStamp>65</ModificationStamp>
+    <ModificationStamp>68</ModificationStamp>
     <Date>2016-02-29</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.0.RT7_b1515-0427</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>165</ProjectCompNumb>
+    <ProjectCompNumb>185</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -40,13 +40,6 @@
     <DontWriteGeneratedModules lines_count="0" />
     <ProjectStaticFilesGenerationMode>STANDALONE</ProjectStaticFilesGenerationMode>
   </Options>
-  <UserFolder>
-    <UserFolderName />
-    <NodeName>Referenced_Components</NodeName>
-    <CompNumb>52</CompNumb>
-    <FolderType>Beans</FolderType>
-    <ExpandedAll>true</ExpandedAll>
-  </UserFolder>
   <UserFolder>
     <UserFolderName />
     <NodeName>Communications</NodeName>
@@ -11322,49 +11315,49 @@
       <Value17>true</Value17>
       <ItemId18>71</ItemId18>
       <Value18>true</Value18>
-      <ItemId19>76</ItemId19>
+      <ItemId19>77</ItemId19>
       <Value19>true</Value19>
-      <ItemId20>77</ItemId20>
+      <ItemId20>85</ItemId20>
       <Value20>true</Value20>
-      <ItemId21>85</ItemId21>
+      <ItemId21>86</ItemId21>
       <Value21>true</Value21>
-      <ItemId22>86</ItemId22>
+      <ItemId22>88</ItemId22>
       <Value22>true</Value22>
-      <ItemId23>88</ItemId23>
+      <ItemId23>90</ItemId23>
       <Value23>true</Value23>
-      <ItemId24>90</ItemId24>
+      <ItemId24>92</ItemId24>
       <Value24>true</Value24>
-      <ItemId25>92</ItemId25>
+      <ItemId25>94</ItemId25>
       <Value25>true</Value25>
-      <ItemId26>94</ItemId26>
+      <ItemId26>96</ItemId26>
       <Value26>true</Value26>
-      <ItemId27>96</ItemId27>
+      <ItemId27>98</ItemId27>
       <Value27>true</Value27>
-      <ItemId28>98</ItemId28>
+      <ItemId28>99</ItemId28>
       <Value28>true</Value28>
-      <ItemId29>99</ItemId29>
+      <ItemId29>101</ItemId29>
       <Value29>true</Value29>
-      <ItemId30>101</ItemId30>
+      <ItemId30>103</ItemId30>
       <Value30>true</Value30>
-      <ItemId31>103</ItemId31>
+      <ItemId31>105</ItemId31>
       <Value31>true</Value31>
-      <ItemId32>105</ItemId32>
+      <ItemId32>133</ItemId32>
       <Value32>true</Value32>
-      <ItemId33>133</ItemId33>
+      <ItemId33>138</ItemId33>
       <Value33>true</Value33>
-      <ItemId34>138</ItemId34>
+      <ItemId34>143</ItemId34>
       <Value34>true</Value34>
-      <ItemId35>143</ItemId35>
+      <ItemId35>147</ItemId35>
       <Value35>true</Value35>
-      <ItemId36>147</ItemId36>
+      <ItemId36>154</ItemId36>
       <Value36>true</Value36>
-      <ItemId37>154</ItemId37>
+      <ItemId37>161</ItemId37>
       <Value37>true</Value37>
-      <ItemId38>161</ItemId38>
+      <ItemId38>162</ItemId38>
       <Value38>true</Value38>
-      <ItemId39>162</ItemId39>
+      <ItemId39>163</ItemId39>
       <Value39>true</Value39>
-      <ItemId40>163</ItemId40>
+      <ItemId40>76</ItemId40>
       <Value40>true</Value40>
     </BoolList_BeanConfig>
     <BoolList_TaskConfig>
@@ -11479,49 +11472,49 @@
       <Value17>true</Value17>
       <ItemId18>71</ItemId18>
       <Value18>true</Value18>
-      <ItemId19>76</ItemId19>
+      <ItemId19>77</ItemId19>
       <Value19>true</Value19>
-      <ItemId20>77</ItemId20>
+      <ItemId20>85</ItemId20>
       <Value20>true</Value20>
-      <ItemId21>85</ItemId21>
+      <ItemId21>86</ItemId21>
       <Value21>true</Value21>
-      <ItemId22>86</ItemId22>
+      <ItemId22>88</ItemId22>
       <Value22>true</Value22>
-      <ItemId23>88</ItemId23>
+      <ItemId23>90</ItemId23>
       <Value23>true</Value23>
-      <ItemId24>90</ItemId24>
+      <ItemId24>92</ItemId24>
       <Value24>true</Value24>
-      <ItemId25>92</ItemId25>
+      <ItemId25>94</ItemId25>
       <Value25>true</Value25>
-      <ItemId26>94</ItemId26>
+      <ItemId26>96</ItemId26>
       <Value26>true</Value26>
-      <ItemId27>96</ItemId27>
+      <ItemId27>98</ItemId27>
       <Value27>true</Value27>
-      <ItemId28>98</ItemId28>
+      <ItemId28>99</ItemId28>
       <Value28>true</Value28>
-      <ItemId29>99</ItemId29>
+      <ItemId29>101</ItemId29>
       <Value29>true</Value29>
-      <ItemId30>101</ItemId30>
+      <ItemId30>103</ItemId30>
       <Value30>true</Value30>
-      <ItemId31>103</ItemId31>
+      <ItemId31>105</ItemId31>
       <Value31>true</Value31>
-      <ItemId32>105</ItemId32>
+      <ItemId32>133</ItemId32>
       <Value32>true</Value32>
-      <ItemId33>133</ItemId33>
+      <ItemId33>138</ItemId33>
       <Value33>true</Value33>
-      <ItemId34>138</ItemId34>
+      <ItemId34>143</ItemId34>
       <Value34>true</Value34>
-      <ItemId35>143</ItemId35>
+      <ItemId35>147</ItemId35>
       <Value35>true</Value35>
-      <ItemId36>147</ItemId36>
+      <ItemId36>154</ItemId36>
       <Value36>true</Value36>
-      <ItemId37>154</ItemId37>
+      <ItemId37>161</ItemId37>
       <Value37>true</Value37>
-      <ItemId38>161</ItemId38>
+      <ItemId38>162</ItemId38>
       <Value38>true</Value38>
-      <ItemId39>162</ItemId39>
+      <ItemId39>163</ItemId39>
       <Value39>true</Value39>
-      <ItemId40>163</ItemId40>
+      <ItemId40>76</ItemId40>
       <Value40>true</Value40>
     </BoolList_BeanConfig>
     <BoolList_TaskConfig>
@@ -20763,7 +20756,7 @@
           <ComponentUUID>com.freescale.processorexpert.asynchroserial</ComponentUUID>
           <BeanType>AsynchroSerial</BeanType>
           <Name>Serial1</Name>
-          <CompNumb>25</CompNumb>
+          <CompNumb>165</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>PHONE</IconName>
@@ -21608,8 +21601,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.serial_ldd</ComponentUUID>
                 <BeanType>Serial_LDD</BeanType>
-                <Name>ASerialLdd1</Name>
-                <CompNumb>26</CompNumb>
+                <Name>ASerialLdd2</Name>
+                <CompNumb>166</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PHONE_LDD</IconName>
@@ -21623,7 +21616,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>ASerialLdd1</Value>
+                    <Value>ASerialLdd2</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>Device</ItemSymbol>
@@ -22677,7 +22670,7 @@
                     <ItemSymbol>OnBlockReceivedName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnBlockReceived</Value>
+                    <Value>ASerialLdd2_OnBlockReceived</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBlockSent</ItemSymbol>
@@ -22693,7 +22686,7 @@
                     <ItemSymbol>OnBlockSentName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnBlockSent</Value>
+                    <Value>ASerialLdd2_OnBlockSent</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnBreak</ItemSymbol>
@@ -22709,7 +22702,7 @@
                     <ItemSymbol>OnBreakName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnBreak</Value>
+                    <Value>ASerialLdd2_OnBreak</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnError</ItemSymbol>
@@ -22725,7 +22718,7 @@
                     <ItemSymbol>OnErrorName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnError</Value>
+                    <Value>ASerialLdd2_OnError</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>OnTxComplete</ItemSymbol>
@@ -22741,7 +22734,7 @@
                     <ItemSymbol>OnTxCompleteName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnTxComplete</Value>
+                    <Value>ASerialLdd2_OnTxComplete</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>NonRtosOthrEvntsGrp</ItemSymbol>
@@ -22768,7 +22761,7 @@
                     <ItemSymbol>OnIdleName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnIdle</Value>
+                    <Value>ASerialLdd2_OnIdle</Value>
                     <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
                   </ItemState>
                   <ItemState>
@@ -22791,7 +22784,7 @@
                     <ItemSymbol>OnRxActiveEdgeName</ItemSymbol>
                     <ReadOnly>false</ReadOnly>
                     <UserReadOnly>false</UserReadOnly>
-                    <Value>ASerialLdd1_OnRxActiveEdge</Value>
+                    <Value>ASerialLdd2_OnRxActiveEdge</Value>
                     <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
                   </ItemState>
                 </Events>
@@ -24390,7 +24383,7 @@
           <ComponentUUID>com.freescale.processorexpert.asynchroserial</ComponentUUID>
           <BeanType>AsynchroSerial</BeanType>
           <Name>Serial2</Name>
-          <CompNumb>28</CompNumb>
+          <CompNumb>167</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>PHONE</IconName>
@@ -35411,144 +35404,6 @@
   </Bean>
   <Bean>
     <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
-    <BeanType>Timeout</BeanType>
-    <Name>TMOUT1</Name>
-    <CompNumb>76</CompNumb>
-    <CompEnabled>true</CompEnabled>
-    <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
-    <IconName>Timeout</IconName>
-    <UserFolderName>Referenced_Components</UserFolderName>
-    <Comment lines_count="0" />
-    <Template />
-    <BeanVersion>01.030</BeanVersion>
-    <LightErrorsIgnored>false</LightErrorsIgnored>
-    <Properties>
-      <ItemState>
-        <ItemSymbol>DeviceName</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value>TMOUT1</Value>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>CriticalSection</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value>CS1</Value>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>MaxTimeoutCounters</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>CounterTickPeriod</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>10</Value>
-        <Base>DEC</Base>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>RTOSGroup</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>false</Value>
-        <Expanded>false</Expanded>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>RTOS</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <Value />
-      </ItemState>
-    </Properties>
-    <Methods>
-      <ItemState>
-        <ItemSymbol>GetCounter</ItemSymbol>
-        <ReadOnly>true</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>GetCounter</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>LeaveCounter</ItemSymbol>
-        <ReadOnly>true</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>LeaveCounter</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>Value</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>Value</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>SetCounter</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>SetCounter</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>CounterExpired</ItemSymbol>
-        <ReadOnly>true</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>CounterExpired</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>AddTick</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>AddTick</UsrMethodName>
-      </ItemState>
-      <ItemState>
-        <ItemSymbol>Init</ItemSymbol>
-        <ReadOnly>false</ReadOnly>
-        <UserReadOnly>false</UserReadOnly>
-        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>0</Index>
-        <Value>true</Value>
-        <LastSelection>true</LastSelection>
-        <LastUserSel>yes</LastUserSel>
-        <UsrMethodName>Init</UsrMethodName>
-      </ItemState>
-    </Methods>
-    <Events />
-  </Bean>
-  <Bean>
-    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
     <BeanType>LED</BeanType>
     <Name>LED_IR</Name>
     <CompNumb>77</CompNumb>
@@ -35615,7 +35470,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>LEDpin3</Name>
-          <CompNumb>80</CompNumb>
+          <CompNumb>169</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -35660,8 +35515,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
-                <Name>BitIoLdd11</Name>
-                <CompNumb>81</CompNumb>
+                <Name>BitIoLdd7</Name>
+                <CompNumb>170</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -35675,7 +35530,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>BitIoLdd11</Value>
+                    <Value>BitIoLdd7</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>_Pin</ItemSymbol>
@@ -41461,7 +41316,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>2</Index>
+        <Index>0</Index>
         <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
@@ -41680,7 +41535,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Index>2</Index>
+        <Index>0</Index>
         <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
@@ -43407,7 +43262,7 @@
               <ItemSymbol>_Cmp</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value />
+              <Value>FTM0_MOD</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -45383,14 +45238,14 @@
               <ItemSymbol>_Cmp</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value>LPTMR0_CMR</Value>
+              <Value>FTM0_MOD</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
               <ItemSymbol>Duty</ItemSymbol>
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
-              <Value />
+              <Value>FTM0_C2V</Value>
               <SharedPrphMode>false</SharedPrphMode>
             </ItemState>
             <ItemState>
@@ -46378,7 +46233,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>C11</Name>
-          <CompNumb>134</CompNumb>
+          <CompNumb>171</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -46423,8 +46278,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
-                <Name>BitIoLdd7</Name>
-                <CompNumb>136</CompNumb>
+                <Name>BitIoLdd8</Name>
+                <CompNumb>172</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -46438,7 +46293,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>BitIoLdd7</Value>
+                    <Value>BitIoLdd8</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>_Pin</ItemSymbol>
@@ -46974,7 +46829,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>C21</Name>
-          <CompNumb>135</CompNumb>
+          <CompNumb>173</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -47019,8 +46874,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
-                <Name>BitIoLdd8</Name>
-                <CompNumb>137</CompNumb>
+                <Name>BitIoLdd9</Name>
+                <CompNumb>174</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -47034,7 +46889,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>BitIoLdd8</Value>
+                    <Value>BitIoLdd9</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>_Pin</ItemSymbol>
@@ -47792,7 +47647,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>C12</Name>
-          <CompNumb>139</CompNumb>
+          <CompNumb>175</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -47837,8 +47692,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
-                <Name>BitIoLdd9</Name>
-                <CompNumb>141</CompNumb>
+                <Name>BitIoLdd10</Name>
+                <CompNumb>176</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -47852,7 +47707,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>BitIoLdd9</Value>
+                    <Value>BitIoLdd10</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>_Pin</ItemSymbol>
@@ -48388,7 +48243,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>C22</Name>
-          <CompNumb>140</CompNumb>
+          <CompNumb>177</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -48433,8 +48288,8 @@
                 <Repository>file:/${ProcessorExpert_loc}/Repositories/Kinetis_Repository</Repository>
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
-                <Name>BitIoLdd10</Name>
-                <CompNumb>142</CompNumb>
+                <Name>BitIoLdd11</Name>
+                <CompNumb>178</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -48448,7 +48303,7 @@
                     <ItemSymbol>DeviceName</ItemSymbol>
                     <ReadOnly>true</ReadOnly>
                     <UserReadOnly>true</UserReadOnly>
-                    <Value>BitIoLdd10</Value>
+                    <Value>BitIoLdd11</Value>
                   </ItemState>
                   <ItemState>
                     <ItemSymbol>_Pin</ItemSymbol>
@@ -52507,7 +52362,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>CE1</Name>
-          <CompNumb>155</CompNumb>
+          <CompNumb>179</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -52553,7 +52408,7 @@
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
                 <Name>BitIoLdd18</Name>
-                <CompNumb>157</CompNumb>
+                <CompNumb>180</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -53103,7 +52958,7 @@
           <ComponentUUID>com.freescale.processorexpert.bitio</ComponentUUID>
           <BeanType>BitIO</BeanType>
           <Name>CSN1</Name>
-          <CompNumb>156</CompNumb>
+          <CompNumb>181</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>BITIO</IconName>
@@ -53149,7 +53004,7 @@
                 <ComponentUUID>com.freescale.processorexpert.ldd.bitio_ldd</ComponentUUID>
                 <BeanType>BitIO_LDD</BeanType>
                 <Name>BitIoLdd19</Name>
-                <CompNumb>158</CompNumb>
+                <CompNumb>182</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>PORT_LDD</IconName>
@@ -53757,7 +53612,7 @@
           <ComponentUUID>com.freescale.processorexpert.extint</ComponentUUID>
           <BeanType>ExtInt</BeanType>
           <Name>IRQ1</Name>
-          <CompNumb>159</CompNumb>
+          <CompNumb>183</CompNumb>
           <CompEnabled>true</CompEnabled>
           <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
           <IconName>EXTINT</IconName>
@@ -53803,7 +53658,7 @@
                 <ComponentUUID>com.freescale.processorexpert.ldd.extint_ldd</ComponentUUID>
                 <BeanType>ExtInt_LDD</BeanType>
                 <Name>ExtIntLdd2</Name>
-                <CompNumb>160</CompNumb>
+                <CompNumb>184</CompNumb>
                 <CompEnabled>true</CompEnabled>
                 <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
                 <IconName>ExtInt_LDD</IconName>
@@ -58004,6 +57859,144 @@
         <Value>same as interrupt</Value>
       </ItemState>
     </Events>
+  </Bean>
+  <Bean>
+    <Repository>file:/${home_ProcessorExpert_loc}/MyComponents</Repository>
+    <BeanType>Timeout</BeanType>
+    <Name>TMOUT1</Name>
+    <CompNumb>76</CompNumb>
+    <CompEnabled>true</CompEnabled>
+    <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
+    <IconName>Timeout</IconName>
+    <UserFolderName>Communications</UserFolderName>
+    <Comment lines_count="0" />
+    <Template />
+    <BeanVersion>01.030</BeanVersion>
+    <LightErrorsIgnored>false</LightErrorsIgnored>
+    <Properties>
+      <ItemState>
+        <ItemSymbol>DeviceName</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>TMOUT1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CriticalSection</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value>CS1</Value>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>MaxTimeoutCounters</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>1</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CounterTickPeriod</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>10</Value>
+        <Base>DEC</Base>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>RTOSGroup</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Value>false</Value>
+        <Expanded>false</Expanded>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>RTOS</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <Value />
+      </ItemState>
+    </Properties>
+    <Methods>
+      <ItemState>
+        <ItemSymbol>GetCounter</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>GetCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>LeaveCounter</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>LeaveCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Value</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>Value</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>SetCounter</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>SetCounter</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>CounterExpired</ItemSymbol>
+        <ReadOnly>true</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>CounterExpired</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>AddTick</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>AddTick</UsrMethodName>
+      </ItemState>
+      <ItemState>
+        <ItemSymbol>Init</ItemSymbol>
+        <ReadOnly>false</ReadOnly>
+        <UserReadOnly>false</UserReadOnly>
+        <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
+        <Index>0</Index>
+        <Value>true</Value>
+        <LastSelection>true</LastSelection>
+        <LastUserSel>yes</LastUserSel>
+        <UsrMethodName>Init</UsrMethodName>
+      </ItemState>
+    </Methods>
+    <Events />
   </Bean>
   <ComponentInitializationSequence>
     <EmptySection_DummyValue />

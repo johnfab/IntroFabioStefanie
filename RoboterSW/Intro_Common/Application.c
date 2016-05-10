@@ -42,8 +42,10 @@ void APP_EventHandler(EVNT_Handle event) {
   case EVNT_LED_HEARTBEAT:
     LED1_Neg();
     break;
+
 #if PL_CONFIG_HAS_KEYS
   #if PL_CONFIG_NOF_KEYS>=1
+    // Button 1 (A) ----------------------------------------------------------------------
   case EVNT_SW1_PRESSED:
     LED2_Neg();
 	SHELL_SendString("SW1 pressed\r\n");
@@ -58,11 +60,9 @@ void APP_EventHandler(EVNT_Handle event) {
 	#endif
 	break;
   case EVNT_SW1_RELEASED:
-    SHELL_SendString("SW1 released\r\n");
     break;
   case EVNT_SW1_LPRESSED:
 	LED2_Off();
-	//CLS1_SendStr("SW1 long pressed\r\n", CLS1_GetStdio()->stdOut);
 	SHELL_SendString("SW1 long pressed\r\n");
 	#if PL_CONFIG_HAS_BUZZER
     	BUZ_PlayTune(BUZ_TUNE_BUTTON_LONG);
@@ -76,74 +76,68 @@ void APP_EventHandler(EVNT_Handle event) {
 	break;
  #endif
  #if PL_CONFIG_NOF_KEYS>=2
+	// Button 2 (B) ----------------------------------------------------------------------
   case EVNT_SW2_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW2 pressed\r\n", CLS1_GetStdio()->stdOut);
 	SHELL_SendString("SW2 pressed\r\n");
     break;
+  case EVNT_SW2_RELEASED:
+    break;
   case EVNT_SW2_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW2 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW2 long pressed\r\n");
  	break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=3
+ 	// Button 3 (C) ----------------------------------------------------------------------
   case EVNT_SW3_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW3 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW3 pressed\r\n");
     break;
+  case EVNT_SW3_RELEASED:
+      break;
   case EVNT_SW3_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW3 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW3 long pressed\r\n");
  	break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=4
+ 	// Button 4 (D) ----------------------------------------------------------------------
   case EVNT_SW4_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW4 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW4 pressed\r\n");
     break;
+  case EVNT_SW4_RELEASED:
+      break;
   case EVNT_SW4_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW4 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW4 long pressed\r\n");
  	break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=5
+ 	// Button 5 (E) ----------------------------------------------------------------------
   case EVNT_SW5_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW5 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW5 pressed\r\n");
     break;
+  case EVNT_SW5_RELEASED:
+      break;
   case EVNT_SW5_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW5 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW5 long pressed\r\n");
  	break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=6
+ 	// Button 6 (F) ----------------------------------------------------------------------
   case EVNT_SW6_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW6 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW6 pressed\r\n");
     break;
+  case EVNT_SW6_RELEASED:
+      break;
   case EVNT_SW6_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW6 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW6 long pressed\r\n");
  	break;
   #endif
   #if PL_CONFIG_NOF_KEYS>=7
+ 	// Button 7 (Joystick) ---------------------------------------------------------------
   case EVNT_SW7_PRESSED:
-    LED2_Neg();
-    //CLS1_SendStr("SW7 pressed\r\n", CLS1_GetStdio()->stdOut);
     SHELL_SendString("SW7 pressed\r\n");
     break;
+  case EVNT_SW7_RELEASED:
+      break;
   case EVNT_SW7_LPRESSED:
- 	LED2_Neg();
- 	//CLS1_SendStr("SW7 long pressed\r\n", CLS1_GetStdio()->stdOut);
  	SHELL_SendString("SW7 long pressed\r\n");
  	break;
   #endif
@@ -151,6 +145,9 @@ void APP_EventHandler(EVNT_Handle event) {
   } /* switch */
 }
 #endif /* PL_CONFIG_HAS_EVENTS */
+
+
+
 
 /* Fallback Code if RTOS fails */
 void APP_Start(void) {

@@ -19,7 +19,7 @@
 /* Main Task */
 static void Task_MainTask (void *pvParameters) {
 	(void)pvParameters; /* avoid compiler warning */
-	CLS1_SendStr("Hello Fabio\r\n", CLS1_GetStdio()->stdOut);
+	//CLS1_SendStr("Hello Fabio\r\n", CLS1_GetStdio()->stdOut);
 	for (;;) {
 		#if PL_CONFIG_HAS_EVENTS
 			EVNT_HandleEvent(APP_EventHandler, TRUE);
