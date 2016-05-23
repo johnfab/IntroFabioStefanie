@@ -36,6 +36,11 @@
   #include "Shell.h"
 #endif
 
+/* Includes for Functions */
+#include "Reflectance.h"
+#include "LineFollow.h"
+#include "Maze.h"
+
 static bool REMOTE_isOn = FALSE;
 static bool REMOTE_isVerbose = FALSE;
 static bool REMOTE_useJoystick = TRUE;
@@ -142,58 +147,38 @@ static void RemoteTask (void *pvParameters) {
 
 #if PL_CONFIG_HAS_MOTOR
 static void REMOTE_HandleMotorMsg(int16_t speedVal, int16_t directionVal, int16_t z) {
-  #define SCALE_DOWN 30
+  #define SCALE_DOWN 32
   #define MIN_VALUE  250 /* values below this value are ignored */
-  #define DRIVE_DOWN 1
+  #define SPEED_FACTOR 3
+  #define STEERING_FACTOR 4
 
   if (!REMOTE_isOn) {
     return;
-  }
-  if (z<-900) { /* have a way to stop motor: turn FRDM USB port side up or down */
-#if PL_CONFIG_HAS_DRIVE
-    DRV_SetSpeed(0, 0);
-#else
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), 0);
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), 0);
-#endif
-  } else if ((directionVal>MIN_VALUE || directionVal<-MIN_VALUE) && (speedVal>MIN_VALUE || speedVal<-MIN_VALUE)) {
+  } else if (speedVal > MIN_VALUE || speedVal < -MIN_VALUE) {
+
     int16_t speed, speedL, speedR;
-    
-    speed = speedVal/SCALE_DOWN;
+    speed = SPEED_FACTOR*(speedVal/SCALE_DOWN);
+
     if (directionVal<0) {
       if (speed<0) {
-        speedR = speed+(directionVal/SCALE_DOWN);
+        speedR = speed+STEERING_FACTOR*(directionVal/SCALE_DOWN);
       } else {
-        speedR = speed-(directionVal/SCALE_DOWN);
+        speedR = speed-STEERING_FACTOR*(directionVal/SCALE_DOWN);
       }
       speedL = speed;
     } else {
       speedR = speed;
       if (speed<0) {
-        speedL = speed-(directionVal/SCALE_DOWN);
+        speedL = speed-STEERING_FACTOR*(directionVal/SCALE_DOWN);
       } else {
-        speedL = speed+(directionVal/SCALE_DOWN);
+        speedL = speed+STEERING_FACTOR*(directionVal/SCALE_DOWN);
       }
     }
 #if PL_CONFIG_HAS_DRIVE
-    DRV_SetSpeed(speedL*SCALE_DOWN/DRIVE_DOWN, speedR*SCALE_DOWN/DRIVE_DOWN);
+    DRV_SetSpeed(speedL*SCALE_DOWN, speedR*SCALE_DOWN);
 #else
     MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), speedL);
     MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), speedR);
-#endif
-  } else if (speedVal>100 || speedVal<-100) { /* speed */
-#if PL_CONFIG_HAS_DRIVE
-    DRV_SetSpeed(speedVal, speedVal);
-#else
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), -speedVal/SCALE_DOWN);
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), -speedVal/SCALE_DOWN);
-#endif
-  } else if (directionVal>100 || directionVal<-100) { /* direction */
-#if PL_CONFIG_HAS_DRIVE
-    DRV_SetSpeed(directionVal/DRIVE_DOWN, -directionVal/DRIVE_DOWN);
-#else
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), -directionVal/SCALE_DOWN);
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), (directionVAl/SCALE_DOWN));
 #endif
   } else { /* device flat on the table? */
 #if PL_CONFIG_HAS_DRIVE
@@ -276,23 +261,31 @@ uint8_t REMOTE_HandleRemoteRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *
       break;
 #endif
     case RAPP_MSG_TYPE_JOYSTICK_BTN:
+      /* handle here the button pressed messages */
       *handled = TRUE;
       val = *data; /* get data value */
 #if PL_CONFIG_HAS_SHELL && PL_CONFIG_HAS_BUZZER && PL_CONFIG_HAS_REMOTE
-      if (val=='F') { /* F button, disable remote */
-        SHELL_ParseCmd((unsigned char*)"buzzer buz 300 500");
-        REMOTE_SetOnOff(FALSE);
-        DRV_SetSpeed(0,0); /* turn off motors */
-        SHELL_SendString("Remote OFF\r\n");
-      } else if (val=='G') { /* center joystick button: enable remote */
-        SHELL_ParseCmd((unsigned char*)"buzzer buz 300 1000");
-        REMOTE_SetOnOff(TRUE);
-        DRV_SetMode(DRV_MODE_SPEED);
-        SHELL_SendString("Remote ON\r\n");
-      } else if (val=='C') { /* red 'C' button */
-        /*! \todo add functionality */
-      } else if (val=='A') { /* green 'A' button */
-        /*! \todo add functionality */
+
+      if (val == 'A') {      /* red 'A' button    - Funktion: */
+
+      } else if (val=='B') { /* yellow 'B' button - Funktion: MAZE mit Rechte Hand Regel */
+    	  MAZE_ClearSolution();
+    	  MAZE_SetSolveAlgorithm(RIGHT_HAND);
+    	  LF_StartFollowing();
+      } else if (val=='C') { /* green 'C' button  - Funktion: Stoppe LF*/
+    	  LF_StopFollowing();
+      } else if (val=='D') { /* blue 'D' button   - Funktion: MAZE mit Linke Hand Regel */
+    	  MAZE_ClearSolution();
+    	  MAZE_SetSolveAlgorithm(LEFT_HAND);
+    	  LF_StartFollowing();
+      } else if (val=='E') { /* gray 'E' button   - Funktion: Remote ON/OFF*/
+    	  DRV_SetMode(DRV_MODE_SPEED);
+    	  SHELL_ParseCmd((unsigned char*)"buzzer buz 300 300");
+      } else if (val=='F') { /* gray 'F' button   - Funktion: Reflectance Calib */
+    	  REF_CalibrateStartStop();
+      } else if (val=='G') { /* center joystick 'G' button - Funktion: Hupe*/
+    	  SHELL_ParseCmd((unsigned char*)"buzzer buz 300 1000");
+    	  SHELL_SendString("Button G received\r\n");
       }
 #else
       *handled = FALSE; /* no shell and no buzzer? */

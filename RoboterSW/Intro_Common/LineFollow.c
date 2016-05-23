@@ -44,6 +44,7 @@ typedef enum {
 #define LF_STOP_FOLLOWING  (1<<1)  /* stop line following */
 
 static volatile StateType LF_currState = STATE_IDLE;
+static bool finished;
 static xTaskHandle LFTaskHandle;
 #if PL_CONFIG_HAS_LINE_MAZE
 static uint8_t LF_solvedIdx = 0; /*  index to iterate through the solution, zero is the solution start index */
@@ -106,12 +107,24 @@ static void StateMachine(void) {
     case STATE_TURN:
       #if PL_CONFIG_HAS_LINE_MAZE
       /*! \todo Handle maze turning? */
+		MAZE_EvaluteTurn(&finished);
+    	if(finished)
+    	{
+    		LF_currState = STATE_FINISHED;
+    	}
+    	else
+    	{
+    		LF_currState = STATE_FOLLOW_SEGMENT;
+    	}
       #endif /* PL_CONFIG_HAS_LINE_MAZE */
       break;
 
     case STATE_FINISHED:
       #if PL_CONFIG_HAS_LINE_MAZE
       /*! \todo Handle maze finished? */
+	  MAZE_SetSolved();
+      LF_StartFollowing();
+      LF_currState = STATE_TURN;
       #endif /* PL_CONFIG_HAS_LINE_MAZE */
       break;
     case STATE_STOP:
@@ -203,6 +216,7 @@ void LF_Deinit(void) {
 
 void LF_Init(void) {
   LF_currState = STATE_IDLE;
+  finished = FALSE;
   if (FRTOS1_xTaskCreate(LineTask, "Line", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+2, &LFTaskHandle) != pdPASS) {
     for(;;){} /* error */
   }

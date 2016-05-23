@@ -30,11 +30,23 @@
   #include "Reflectance.h"
 #endif
 
+#if PL_CONFIG_HAS_REMOTE
+	#include "RApp.h"
+	#include "RNet_App.h"
+	#include "RNet_AppConfig.h"
+	#include "Remote.h"
+#endif
+
+static uint8_t buf;
+static RNWK_ShortAddrType commPartnerAddress;
+
 #if PL_CONFIG_HAS_EVENTS
 void APP_EventHandler(EVNT_Handle event) {
+
   switch(event) {
   case EVNT_STARTUP:
     LED1_On(); /* just do something */
+    commPartnerAddress = RNETA_GetDestAddr();
 #if PL_CONFIG_HAS_BUZZER
     BUZ_PlayTune(BUZ_TUNE_WELCOME);
 #endif
@@ -58,6 +70,10 @@ void APP_EventHandler(EVNT_Handle event) {
 	    	LF_StartStopFollowing();
 	    #endif
 	#endif
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'A';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
 	break;
   case EVNT_SW1_RELEASED:
     break;
@@ -79,6 +95,10 @@ void APP_EventHandler(EVNT_Handle event) {
 	// Button 2 (B) ----------------------------------------------------------------------
   case EVNT_SW2_PRESSED:
 	SHELL_SendString("SW2 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'B';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW2_RELEASED:
     break;
@@ -90,6 +110,10 @@ void APP_EventHandler(EVNT_Handle event) {
  	// Button 3 (C) ----------------------------------------------------------------------
   case EVNT_SW3_PRESSED:
     SHELL_SendString("SW3 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'C';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW3_RELEASED:
       break;
@@ -101,6 +125,10 @@ void APP_EventHandler(EVNT_Handle event) {
  	// Button 4 (D) ----------------------------------------------------------------------
   case EVNT_SW4_PRESSED:
     SHELL_SendString("SW4 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'D';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW4_RELEASED:
       break;
@@ -112,6 +140,15 @@ void APP_EventHandler(EVNT_Handle event) {
  	// Button 5 (E) ----------------------------------------------------------------------
   case EVNT_SW5_PRESSED:
     SHELL_SendString("SW5 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+    		if (REMOTE_GetOnOff()) {
+    			REMOTE_SetOnOff(FALSE);
+    		} else {
+    			REMOTE_SetOnOff(TRUE);
+    		}
+	    	buf = 'E';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW5_RELEASED:
       break;
@@ -123,6 +160,10 @@ void APP_EventHandler(EVNT_Handle event) {
  	// Button 6 (F) ----------------------------------------------------------------------
   case EVNT_SW6_PRESSED:
     SHELL_SendString("SW6 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'F';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW6_RELEASED:
       break;
@@ -134,6 +175,10 @@ void APP_EventHandler(EVNT_Handle event) {
  	// Button 7 (Joystick) ---------------------------------------------------------------
   case EVNT_SW7_PRESSED:
     SHELL_SendString("SW7 pressed\r\n");
+	#if PL_CONFIG_BOARD_IS_FRDM && PL_CONFIG_HAS_REMOTE
+	    	buf = 'G';
+	    	(void) RAPP_SendPayloadDataBlock(&buf, sizeof(buf), RAPP_MSG_TYPE_JOYSTICK_BTN, commPartnerAddress, RPHY_PACKET_FLAGS_REQ_ACK);
+	#endif
     break;
   case EVNT_SW7_RELEASED:
       break;

@@ -26,7 +26,15 @@
   #include "Remote.h"
 #endif
 
-static RNWK_ShortAddrType APP_dstAddr = RNWK_ADDR_BROADCAST; /* destination node address */
+/* Set Destination Address         *
+ * Robo is 0xD0 and Remote is 0xD1 */
+#if PL_CONFIG_BOARD_IS_FRDM
+	static RNWK_ShortAddrType APP_dstAddr = 0xD0; /* destination node address */
+#elif PL_CONFIG_BOARD_IS_ROBO
+	static RNWK_ShortAddrType APP_dstAddr = 0xD1; /* destination node address */
+#else
+	#error "Wrong board type in RNet_App.c"
+#endif
 
 typedef enum {
   RNETA_NONE,
@@ -122,9 +130,21 @@ static void Process(void) {
 }
 
 static void Init(void) {
-  if (RAPP_SetThisNodeAddr(RNWK_ADDR_BROADCAST)!=ERR_OK) { /* set a default address */
-    //APP_DebugPrint((unsigned char*)"ERR: Failed setting node address\r\n");
-  }
+
+	/* Set Source Address         *
+	 * Robo is 0xD0 and Remote is 0xD1 */
+	#if PL_CONFIG_BOARD_IS_FRDM
+		if (RAPP_SetThisNodeAddr(0xD1)!=ERR_OK) { /* set a default address */
+			//APP_DebugPrint((unsigned char*)"ERR: Failed setting node address\r\n");
+		}
+	#elif PL_CONFIG_BOARD_IS_ROBO
+		if (RAPP_SetThisNodeAddr(0xD0)!=ERR_OK) { /* set a default address */
+			//APP_DebugPrint((unsigned char*)"ERR: Failed setting node address\r\n");
+		}
+	#else
+		#error "Wrong board type in RNet_App.c"
+	#endif
+
 }
 
 static void RadioTask(void *pvParameters) {

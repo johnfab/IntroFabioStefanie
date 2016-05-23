@@ -24,6 +24,7 @@ static void Task_MainTask (void *pvParameters) {
 		#if PL_CONFIG_HAS_EVENTS
 			EVNT_HandleEvent(APP_EventHandler, TRUE);
 		#endif
+		FRTOS1_taskYIELD();
 #if 0
 		static int i = 0;
 		i++;
