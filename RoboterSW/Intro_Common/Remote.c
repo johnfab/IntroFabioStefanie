@@ -13,6 +13,9 @@
 #include "CLS1.h"
 #include "UTIL1.h"
 #include "Shell.h"
+#if PL_CONFIG_HAS_BUZZER
+  #include "Buzzer.h"
+#endif
 #if PL_CONFIG_HAS_PID
   #include "PID.h"
 #endif
@@ -149,12 +152,12 @@ static void RemoteTask (void *pvParameters) {
 static void REMOTE_HandleMotorMsg(int16_t speedVal, int16_t directionVal, int16_t z) {
   #define SCALE_DOWN 32
   #define MIN_VALUE  250 /* values below this value are ignored */
-  #define SPEED_FACTOR 3
-  #define STEERING_FACTOR 4
+  #define SPEED_FACTOR 2
+  #define STEERING_FACTOR 2
 
   if (!REMOTE_isOn) {
     return;
-  } else if (speedVal > MIN_VALUE || speedVal < -MIN_VALUE) {
+  } else {
 
     int16_t speed, speedL, speedR;
     speed = SPEED_FACTOR*(speedVal/SCALE_DOWN);
@@ -179,13 +182,6 @@ static void REMOTE_HandleMotorMsg(int16_t speedVal, int16_t directionVal, int16_
 #else
     MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), speedL);
     MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), speedR);
-#endif
-  } else { /* device flat on the table? */
-#if PL_CONFIG_HAS_DRIVE
-    DRV_SetSpeed(0, 0);
-#else
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_LEFT), 0);
-    MOT_SetSpeedPercent(MOT_GetMotorHandle(MOT_MOTOR_RIGHT), 0);
 #endif
   }
 }
@@ -266,18 +262,23 @@ uint8_t REMOTE_HandleRemoteRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *
       val = *data; /* get data value */
 #if PL_CONFIG_HAS_SHELL && PL_CONFIG_HAS_BUZZER && PL_CONFIG_HAS_REMOTE
 
-      if (val == 'A') {      /* red 'A' button    - Funktion: */
-
+      if (val == 'A') {      /* red 'A' button    - Funktion: MAZE mit Straight Hand Regel */
+    	  MAZE_ClearSolution();
+    	  MAZE_SetSolveAlgorithm(STRAIGHT_HAND);
+    	  LF_StartFollowing();
+    	  BUZ_PlayTune(BUZ_TUNE_WHILE_SOLVING);
       } else if (val=='B') { /* yellow 'B' button - Funktion: MAZE mit Rechte Hand Regel */
     	  MAZE_ClearSolution();
     	  MAZE_SetSolveAlgorithm(RIGHT_HAND);
     	  LF_StartFollowing();
+    	  BUZ_PlayTune(BUZ_TUNE_WHILE_SOLVING);
       } else if (val=='C') { /* green 'C' button  - Funktion: Stoppe LF*/
     	  LF_StopFollowing();
       } else if (val=='D') { /* blue 'D' button   - Funktion: MAZE mit Linke Hand Regel */
     	  MAZE_ClearSolution();
     	  MAZE_SetSolveAlgorithm(LEFT_HAND);
     	  LF_StartFollowing();
+    	  BUZ_PlayTune(BUZ_TUNE_WHILE_SOLVING);
       } else if (val=='E') { /* gray 'E' button   - Funktion: Remote ON/OFF*/
     	  DRV_SetMode(DRV_MODE_SPEED);
     	  SHELL_ParseCmd((unsigned char*)"buzzer buz 300 300");
@@ -285,7 +286,7 @@ uint8_t REMOTE_HandleRemoteRxMessage(RAPP_MSG_Type type, uint8_t size, uint8_t *
     	  REF_CalibrateStartStop();
       } else if (val=='G') { /* center joystick 'G' button - Funktion: Hupe*/
     	  SHELL_ParseCmd((unsigned char*)"buzzer buz 300 1000");
-    	  SHELL_SendString("Button G received\r\n");
+    	  //SHELL_SendString("Button G received\r\n");
       }
 #else
       *handled = FALSE; /* no shell and no buzzer? */

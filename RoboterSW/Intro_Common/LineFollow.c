@@ -129,12 +129,17 @@ static void StateMachine(void) {
       break;
     case STATE_STOP:
       SHELL_SendString("Stopped!\r\n");
+      LF_ActionAfterFinish();
 #if PL_CONFIG_HAS_TURN
       TURN_Turn(TURN_STOP, NULL);
 #endif
       LF_currState = STATE_IDLE;
       break;
   } /* switch */
+}
+
+void LF_ActionAfterFinish(void) {
+	BUZ_PlayTune(BUZ_TUNE_MAZE_FINISHED);
 }
 
 bool LF_IsFollowing(void) {

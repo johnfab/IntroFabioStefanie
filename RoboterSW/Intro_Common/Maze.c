@@ -138,10 +138,9 @@ static void MAZE_RevertPath(void) {
 
 TURN_Kind MAZE_SelectTurn(REF_LineKind prev, REF_LineKind curr) {
 	TURN_Kind selectedTurn = TURN_STOP;
-//
-//	if (prev==REF_LINE_NONE || curr==REF_LINE_NONE){ /* dead end */
-//		selectedTurn = TURN_RIGHT180; /* make U turn */
-//	}
+
+	/* Dead ends are handled before this !!! */
+
 	if(prev==REF_LINE_FULL && curr==REF_LINE_FULL)
 	{
 		return TURN_FINISHED;
@@ -163,9 +162,7 @@ TURN_Kind MAZE_SelectTurn(REF_LineKind prev, REF_LineKind curr) {
 			SHELL_SendString((unsigned char*)"turn: R\r\n");
 			selectedTurn = TURN_RIGHT90;
 		}
-	}
-	else if(solver == RIGHT_HAND)
-	{
+	} else if(solver == RIGHT_HAND) {
 		if ((prev== REF_LINE_FULL || prev==REF_LINE_RIGHT) && curr!=REF_LINE_FULL)
 		{
 			SHELL_SendString((unsigned char*)"turn: R\r\n");
@@ -181,6 +178,19 @@ TURN_Kind MAZE_SelectTurn(REF_LineKind prev, REF_LineKind curr) {
 			SHELL_SendString((unsigned char*)"turn: L\r\n");
 			selectedTurn = TURN_LEFT90;
 		}
+	} else if (solver == STRAIGHT_HAND) {
+		if (curr==REF_LINE_STRAIGHT) {
+			SHELL_SendString((unsigned char*)"turn: S\r\n");
+			selectedTurn = TURN_STRAIGHT;
+		} else if ((prev== REF_LINE_FULL || prev==REF_LINE_LEFT) && curr!=REF_LINE_FULL) {
+			SHELL_SendString((unsigned char*)"turn: L\r\n");
+			selectedTurn = TURN_LEFT90;
+		} else {
+			SHELL_SendString((unsigned char*)"turn: R\r\n");
+			selectedTurn = TURN_RIGHT90;
+		}
+		/* First crosssection over -> go to default algorithm */
+		MAZE_SetSolveAlgorithm(LEFT_HAND);
 	}
 	//after the selection is done, add the turn to the solution path
 	MAZE_AddPath(selectedTurn);

@@ -441,27 +441,27 @@ void PID_Deinit(void) {
 
 void PID_Init(void) {
   /*! \todo determine your PID values */
-  speedLeftConfig.pFactor100 = 1000; //2350;
-  speedLeftConfig.iFactor100 = 40;
-  speedLeftConfig.dFactor100 = 15;
+  speedLeftConfig.pFactor100 = 900;
+  speedLeftConfig.iFactor100 = 80;
+  speedLeftConfig.dFactor100 = 100;
   speedLeftConfig.iAntiWindup = 60000;
-  speedLeftConfig.maxSpeedPercent = 30;
+  speedLeftConfig.maxSpeedPercent = 35;
   speedLeftConfig.lastError = 0;
   speedLeftConfig.integral = 0;
 
-  speedRightConfig.pFactor100 = 1000; //2325;
-  speedRightConfig.iFactor100 = 40;
-  speedRightConfig.dFactor100 = 15;
+  speedRightConfig.pFactor100 = 900;
+  speedRightConfig.iFactor100 = 80;
+  speedRightConfig.dFactor100 = 100;
   speedRightConfig.iAntiWindup = 60000;
-  speedRightConfig.maxSpeedPercent = 30;
+  speedRightConfig.maxSpeedPercent = 35;
   speedRightConfig.lastError = 0;
   speedRightConfig.integral = 0;
 
-  lineFwConfig.pFactor100 = 4000;
-  lineFwConfig.iFactor100 = 20;
+  lineFwConfig.pFactor100 = 3000;
+  lineFwConfig.iFactor100 = 10;
   lineFwConfig.dFactor100 = 100;
-  lineFwConfig.iAntiWindup = 100000;
-  lineFwConfig.maxSpeedPercent = 33;
+  lineFwConfig.iAntiWindup = 80000;
+  lineFwConfig.maxSpeedPercent = 44;
   lineFwConfig.lastError = 0;
   lineFwConfig.integral = 0;
 

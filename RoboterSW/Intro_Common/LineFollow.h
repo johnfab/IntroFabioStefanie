@@ -21,6 +21,7 @@ void LF_StartFollowing(void);
 void LF_StopFollowing(void);
 void LF_StartStopFollowing(void);
 bool LF_IsFollowing(void);
+void LF_ActionAfterFinish(void);
 
 void LF_Init(void);
 void LF_Deinit(void);

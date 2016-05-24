@@ -15,6 +15,9 @@
 #if PL_CONFIG_HAS_SHELL
   #include "CLS1.h"
 #endif
+#if PL_CONFIG_HAS_LINE_MAZE
+	#include "Maze.h"
+#endif
 
 typedef struct {
   uint16_t buzPeriodTicks; /*!< number of trigger ticks for a PWM period */
@@ -58,17 +61,52 @@ static const BUZ_Tune MelodyButtonLong[] =
     {250,200},
 };
 
+static const BUZ_Tune MelodyWhileSolving[] =
+{ /* freq, ms */
+    {350,500},
+    {1,500},
+	{350,500},
+    {1,500},
+	{350,500},
+    {1,500},
+	{350,500},
+	{1,500},
+	{350,500},
+	{1,500},
+};
+
+static const BUZ_Tune MelodyMazeSolved[] =
+{ /* freq, ms */
+    {500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+	{500,250},
+    {1,100},
+};
+
 typedef struct {
   int idx; /* current index */
   int maxIdx; /* maximum index */
+  int soundID; /* ID of the Sound -> f.e. 0 when BUZ_TUNE_WELCOME */
   BUZ_TrgInfo trgInfo;
   const BUZ_Tune *melody;
 } MelodyDesc;
 
 static MelodyDesc BUZ_Melodies[] = {
-  {0, sizeof(MelodyWelcome)/sizeof(MelodyWelcome[0]),         0, 0, MelodyWelcome}, /* BUZ_TUNE_WELCOME */
-  {0, sizeof(MelodyButton)/sizeof(MelodyButton[0]),           0, 0, MelodyButton}, /* BUZ_TUNE_BUTTON */
-  {0, sizeof(MelodyButtonLong)/sizeof(MelodyButtonLong[0]),   0, 0, MelodyButtonLong}, /* BUZ_TUNE_BUTTON_LONG */
+  {0, sizeof(MelodyWelcome)/sizeof(MelodyWelcome[0]),           0, 0, 0, MelodyWelcome},      /* BUZ_TUNE_WELCOME */
+  {0, sizeof(MelodyButton)/sizeof(MelodyButton[0]),             1, 0, 0, MelodyButton},       /* BUZ_TUNE_BUTTON */
+  {0, sizeof(MelodyButtonLong)/sizeof(MelodyButtonLong[0]),     2, 0, 0, MelodyButtonLong},   /* BUZ_TUNE_BUTTON_LONG */
+  {0, sizeof(MelodyWhileSolving)/sizeof(MelodyWhileSolving[0]), 3, 0, 0, MelodyWhileSolving}, /* BUZ_TUNE_WHILE_SOLVING */
+  {0, sizeof(MelodyMazeSolved)/sizeof(MelodyMazeSolved[0]),     4, 0, 0, MelodyMazeSolved},   /* BUZ_TUNE_MAZE_FINISHED */
 };
 static void BUZ_Toggle(void *dataPtr) {
   BUZ_TrgInfo *trgInfo = (BUZ_TrgInfo *)dataPtr;
@@ -98,9 +136,13 @@ static void BUZ_Play(void *dataPtr) {
 
   BUZ_Beep(melody->melody[melody->idx].freq, melody->melody[melody->idx].ms);
   melody->idx++;
-  if (melody->idx<melody->maxIdx) {
-
+  if (melody->idx < melody->maxIdx) {
     TRG_SetTrigger(TRG_BUZ_TUNE, melody->melody[melody->idx-1].ms/TRG_TICKS_MS, BUZ_Play, (void*)melody);
+  } else { /* contionous playing */
+	  if ((melody->soundID == BUZ_TUNE_WHILE_SOLVING) && !(MAZE_IsSolved())) {
+		  melody->idx = 1;
+		  TRG_SetTrigger(TRG_BUZ_TUNE, melody->melody[melody->idx-1].ms/TRG_TICKS_MS, BUZ_Play, (void*)melody);
+	  }
   }
 }
 
